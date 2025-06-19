@@ -84,6 +84,13 @@
 @layer components {
   .trading-card {
     @apply bg-slate-800/50 border border-slate-700/50 rounded-lg backdrop-blur-sm;
+    transition: all 0.3s ease;
+  }
+
+  .trading-card:hover {
+    @apply bg-slate-800/70 border-slate-600/50;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   }
 
   .whale-pulse {
@@ -104,6 +111,29 @@
 
   .ticker-badge {
     @apply bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-xs font-semibold;
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .glow-effect:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, #1e40af 0%, #7c3aed 50%, #ec4899 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  .floating-animation {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  .fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
   }
 }
 
@@ -127,10 +157,58 @@
   }
 }
 
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .ticker-scroll {
   animation: ticker-scroll 30s linear infinite;
 }
 
-.glow-effect {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
 }
