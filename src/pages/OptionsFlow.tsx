@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import TickerTape from '../components/TickerTape';
 import RedirectionLogic from '../components/RedirectionLogic';
 import { TrendingUp, TrendingDown, Filter } from 'lucide-react';
+import { useTranslation } from '../contexts/TranslationContext';
 
 interface OptionsFlow {
   id: string;
@@ -19,6 +20,7 @@ interface OptionsFlow {
 }
 
 const OptionsFlow = () => {
+  const { t } = useTranslation();
   const [flows, setFlows] = useState<OptionsFlow[]>([]);
   const [filter, setFilter] = useState<'all' | 'calls' | 'puts'>('all');
 
@@ -61,14 +63,14 @@ const OptionsFlow = () => {
       <Navigation />
       <TickerTape />
       
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 sm:mb-8 space-y-4 lg:space-y-0">
           <div>
-            <h1 className="text-3xl font-bold text-slate-100 mb-2">
-              Live Options Flow
+            <h1 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">
+              {t('optionsFlow.title')}
             </h1>
-            <p className="text-slate-400">
-              Real-time options trades and unusual activity
+            <p className="text-sm sm:text-base text-slate-400">
+              {t('optionsFlow.subtitle')}
             </p>
           </div>
           
@@ -80,42 +82,42 @@ const OptionsFlow = () => {
                 onChange={(e) => setFilter(e.target.value as any)}
                 className="bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
               >
-                <option value="all">All Options</option>
-                <option value="calls">Calls Only</option>
-                <option value="puts">Puts Only</option>
+                <option value="all">{t('optionsFlow.allOptions')}</option>
+                <option value="calls">{t('optionsFlow.callsOnly')}</option>
+                <option value="puts">{t('optionsFlow.putsOnly')}</option>
               </select>
             </div>
           </div>
         </div>
 
-        <div className="trading-card">
+        <div className="trading-card overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[800px]">
               <thead>
                 <tr className="border-b border-slate-700">
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Ticker</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Type</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Strike</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Expiry</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Size</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Premium</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">IV</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Time</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('optionsFlow.ticker')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('optionsFlow.type')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('optionsFlow.strike')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('optionsFlow.expiry')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('optionsFlow.size')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('optionsFlow.premium')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">IV</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('optionsFlow.time')}</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredFlows.map((flow) => (
                   <tr key={flow.id} className="data-row border-b border-slate-700/30">
-                    <td className="py-3 px-4">
+                    <td className="py-2 sm:py-3 px-3 sm:px-4">
                       <div className="flex items-center space-x-2">
-                        <span className="ticker-badge">{flow.ticker}</span>
+                        <span className="ticker-badge text-xs sm:text-sm">{flow.ticker}</span>
                         {flow.sentiment === 'bullish' ? 
-                          <TrendingUp size={14} className="text-emerald-400" /> :
-                          <TrendingDown size={14} className="text-red-400" />
+                          <TrendingUp size={12} className="text-emerald-400 sm:w-4 sm:h-4" /> :
+                          <TrendingDown size={12} className="text-red-400 sm:w-4 sm:h-4" />
                         }
                       </div>
                     </td>
-                    <td className="py-3 px-4">
+                    <td className="py-2 sm:py-3 px-3 sm:px-4">
                       <span className={`px-2 py-1 rounded text-xs font-semibold ${
                         flow.type === 'call' 
                           ? 'bg-emerald-500/20 text-emerald-300' 
@@ -124,12 +126,12 @@ const OptionsFlow = () => {
                         {flow.type.toUpperCase()}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-slate-300">${flow.strike}</td>
-                    <td className="py-3 px-4 text-slate-400 text-sm">{flow.expiry}</td>
-                    <td className="py-3 px-4 text-slate-300">{flow.size.toLocaleString()}</td>
-                    <td className="py-3 px-4 text-slate-300">${flow.premium.toLocaleString()}</td>
-                    <td className="py-3 px-4 text-slate-300">{flow.iv.toFixed(1)}%</td>
-                    <td className="py-3 px-4 text-slate-400 text-sm">{flow.timestamp}</td>
+                    <td className="py-2 sm:py-3 px-3 sm:px-4 text-slate-300 text-sm">${flow.strike}</td>
+                    <td className="py-2 sm:py-3 px-3 sm:px-4 text-slate-400 text-xs sm:text-sm">{flow.expiry}</td>
+                    <td className="py-2 sm:py-3 px-3 sm:px-4 text-slate-300 text-sm">{flow.size.toLocaleString()}</td>
+                    <td className="py-2 sm:py-3 px-3 sm:px-4 text-slate-300 text-sm">${flow.premium.toLocaleString()}</td>
+                    <td className="py-2 sm:py-3 px-3 sm:px-4 text-slate-300 text-sm">{flow.iv.toFixed(1)}%</td>
+                    <td className="py-2 sm:py-3 px-3 sm:px-4 text-slate-400 text-xs sm:text-sm">{flow.timestamp}</td>
                   </tr>
                 ))}
               </tbody>

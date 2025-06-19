@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import TickerTape from '../components/TickerTape';
 import RedirectionLogic from '../components/RedirectionLogic';
 import { Search, Filter, TrendingUp, TrendingDown, Volume2 } from 'lucide-react';
+import { useTranslation } from '../contexts/TranslationContext';
 
 interface Stock {
   id: string;
@@ -19,6 +20,7 @@ interface Stock {
 }
 
 const Screener = () => {
+  const { t } = useTranslation();
   const [stocks, setStocks] = useState<Stock[]>([]);
   const [filter, setFilter] = useState<'all' | 'whale' | 'volume' | 'movers'>('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -96,91 +98,91 @@ const Screener = () => {
       <Navigation />
       <TickerTape />
       
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div className="flex items-center justify-between mb-6 sm:mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-slate-100 mb-2">
-              Stock Screener
+            <h1 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">
+              {t('screener.title')}
             </h1>
-            <p className="text-slate-400">
-              Find stocks with unusual activity and whale interest
+            <p className="text-sm sm:text-base text-slate-400">
+              {t('screener.subtitle')}
             </p>
           </div>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-8">
-          <div className="relative flex-1">
+        <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-6 sm:mb-8">
+          <div className="relative w-full md:flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
             <input
               type="text"
-              placeholder="Search stocks..."
+              placeholder={t('screener.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50"
             />
           </div>
           
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 w-full md:w-auto">
             <Filter size={16} className="text-slate-400" />
             <select
               value={filter}
               onChange={(e) => setFilter(e.target.value as any)}
-              className="bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="w-full md:w-auto bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             >
-              <option value="all">All Stocks</option>
-              <option value="whale">High Whale Activity</option>
-              <option value="volume">High Volume</option>
-              <option value="movers">Big Movers</option>
+              <option value="all">{t('screener.allStocks')}</option>
+              <option value="whale">{t('screener.highWhaleActivity')}</option>
+              <option value="volume">{t('screener.highVolume')}</option>
+              <option value="movers">{t('screener.bigMovers')}</option>
             </select>
           </div>
         </div>
 
         {/* Results */}
-        <div className="trading-card">
+        <div className="trading-card overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[900px]">
               <thead>
                 <tr className="border-b border-slate-700">
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Stock</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Price</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Change</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Volume</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Market Cap</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Whale Activity</th>
-                  <th className="text-left py-4 px-4 text-slate-300 font-semibold">Sentiment</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('screener.stock')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('screener.price')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('screener.change')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('screener.volume')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('screener.marketCap')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('screener.whaleActivity')}</th>
+                  <th className="text-left py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">{t('screener.sentiment')}</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredStocks.map((stock) => (
                   <tr key={stock.id} className="data-row border-b border-slate-700/30">
-                    <td className="py-4 px-4">
+                    <td className="py-3 sm:py-4 px-3 sm:px-4">
                       <div>
-                        <div className="font-semibold text-slate-100">{stock.ticker}</div>
-                        <div className="text-sm text-slate-400">{stock.company}</div>
+                        <div className="font-semibold text-slate-100 text-sm sm:text-base">{stock.ticker}</div>
+                        <div className="text-xs sm:text-sm text-slate-400 truncate max-w-[120px] sm:max-w-none">{stock.company}</div>
                       </div>
                     </td>
-                    <td className="py-4 px-4 text-slate-300 font-semibold">
+                    <td className="py-3 sm:py-4 px-3 sm:px-4 text-slate-300 font-semibold text-sm sm:text-base">
                       ${stock.price.toFixed(2)}
                     </td>
-                    <td className="py-4 px-4">
-                      <div className={`flex items-center space-x-1 ${
+                    <td className="py-3 sm:py-4 px-3 sm:px-4">
+                      <div className={`flex items-center space-x-1 text-sm ${
                         stock.change >= 0 ? 'text-emerald-400' : 'text-red-400'
                       }`}>
-                        {stock.change >= 0 ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
+                        {stock.change >= 0 ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
                         <span>${stock.change.toFixed(2)} ({stock.changePercent.toFixed(2)}%)</span>
                       </div>
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="py-3 sm:py-4 px-3 sm:px-4">
                       <div className="flex items-center space-x-2">
-                        <Volume2 size={16} className="text-slate-400" />
-                        <span className="text-slate-300">{(stock.volume / 1000000).toFixed(1)}M</span>
+                        <Volume2 size={14} className="text-slate-400" />
+                        <span className="text-slate-300 text-sm">{(stock.volume / 1000000).toFixed(1)}M</span>
                       </div>
                     </td>
-                    <td className="py-4 px-4 text-slate-300">{stock.marketCap}</td>
-                    <td className="py-4 px-4">
+                    <td className="py-3 sm:py-4 px-3 sm:px-4 text-slate-300 text-sm">{stock.marketCap}</td>
+                    <td className="py-3 sm:py-4 px-3 sm:px-4">
                       <div className="flex items-center space-x-2">
-                        <div className="w-16 bg-slate-700 rounded-full h-2">
+                        <div className="w-12 sm:w-16 bg-slate-700 rounded-full h-2">
                           <div 
                             className={`h-2 rounded-full ${
                               stock.whaleActivity > 70 ? 'bg-emerald-400' : 
@@ -189,10 +191,10 @@ const Screener = () => {
                             style={{ width: `${stock.whaleActivity}%` }}
                           ></div>
                         </div>
-                        <span className="text-sm text-slate-400">{stock.whaleActivity}%</span>
+                        <span className="text-xs sm:text-sm text-slate-400">{stock.whaleActivity}%</span>
                       </div>
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="py-3 sm:py-4 px-3 sm:px-4">
                       <span className={`px-2 py-1 rounded text-xs font-semibold ${
                         stock.sentiment === 'bullish' ? 'bg-emerald-500/20 text-emerald-300' :
                         stock.sentiment === 'bearish' ? 'bg-red-500/20 text-red-300' :
