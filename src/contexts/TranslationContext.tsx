@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface Translations {
@@ -98,6 +97,24 @@ const translations: Translations = {
     'screener.marketCap': 'Market Cap',
     'screener.whaleActivity': 'Whale Activity',
     'screener.sentiment': 'Sentiment',
+    
+    // New translations for enhanced features
+    liveTrades: {
+      title: 'Live Whale Trades',
+      subtitle: 'Real-time whale activity and unusual options flow detection'
+    },
+    heatmap: {
+      title: 'Market Heatmap',
+      subtitle: 'Real-time market performance visualization'
+    },
+    whaleSpotlight: {
+      title: 'Whale Spotlight',
+      subtitle: 'Track the most successful whale traders in real-time'
+    },
+    trending: {
+      title: 'Trending Now',
+      subtitle: 'Most discussed whale activities and market insights'
+    },
     
     // Language names
     'lang.en': 'English',

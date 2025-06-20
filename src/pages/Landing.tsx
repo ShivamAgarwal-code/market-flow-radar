@@ -6,7 +6,12 @@ import HeroSection from '../components/HeroSection';
 import FeaturesSection from '../components/FeaturesSection';
 import StatsSection from '../components/StatsSection';
 import CTASection from '../components/CTASection';
+import LiveTradesSection from '../components/LiveTradesSection';
+import MarketHeatmap from '../components/MarketHeatmap';
+import WhaleSpotlight from '../components/WhaleSpotlight';
+import TrendingSection from '../components/TrendingSection';
 import RedirectionLogic from '../components/RedirectionLogic';
+import ChatBox from '../components/ChatBox';
 
 const Landing = () => {
   return (
@@ -17,10 +22,16 @@ const Landing = () => {
       
       <main>
         <HeroSection />
+        <LiveTradesSection />
         <StatsSection />
+        <MarketHeatmap />
+        <WhaleSpotlight />
         <FeaturesSection />
+        <TrendingSection />
         <CTASection />
       </main>
+      
+      <ChatBox />
     </div>
   );
 };
