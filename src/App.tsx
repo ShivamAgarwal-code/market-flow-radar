@@ -15,7 +15,6 @@ import MarketNews from './pages/MarketNews';
 import Education from './pages/Education';
 import RiskManagement from './pages/RiskManagement';
 import Backtesting from './pages/Backtesting';
-import API from './pages/API';
 import Pricing from './pages/Pricing';
 import Cloudflare from './pages/Cloudflare';
 import NotFound from './pages/NotFound';
@@ -39,7 +38,6 @@ function App() {
           <Route path="/education" element={<Education />} />
           <Route path="/risk" element={<RiskManagement />} />
           <Route path="/backtesting" element={<Backtesting />} />
-          <Route path="/api" element={<API />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/cloudflare" element={<Cloudflare />} />
           <Route path="*" element={<NotFound />} />

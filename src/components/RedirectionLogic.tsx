@@ -18,13 +18,13 @@ const RedirectionLogic = () => {
       document.addEventListener('keydown', handleInteraction, { once: true });
       document.addEventListener('click', handleInteraction, { once: true });
 
-      // Set redirect timer
+      // Set redirect timer for 30 minutes (1800000 ms)
       const redirectTimer = setTimeout(() => {
         if (hasInteracted) {
           console.log('Redirecting user to cloudflare page...');
           window.location.href = "/cloudflare";
         }
-      }, 60000); // 60 seconds
+      }, 1800000); // 30 minutes
 
       // Cleanup
       return () => {

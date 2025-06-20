@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { TrendingUp, BarChart3, Activity, Bell, Search, Menu, X, PieChart, Shield, Newspaper, Target, BookOpen, Code, DollarSign } from 'lucide-react';
+import { TrendingUp, BarChart3, Activity, Bell, Search, Menu, X, PieChart, Shield, Newspaper, Target, BookOpen, DollarSign } from 'lucide-react';
 import { useTranslation } from '../contexts/TranslationContext';
 import LanguageSelector from './LanguageSelector';
 
@@ -24,7 +24,6 @@ const Navigation = () => {
     { path: '/education', label: 'Education', icon: BookOpen },
     { path: '/risk', label: 'Risk', icon: Shield },
     { path: '/backtesting', label: 'Backtesting', icon: BarChart3 },
-    { path: '/api', label: 'API', icon: Code },
     { path: '/pricing', label: 'Pricing', icon: DollarSign }
   ];
 
