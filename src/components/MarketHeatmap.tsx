@@ -56,16 +56,6 @@ const MarketHeatmap = () => {
 
     const initialStocks = stockData.map(({ ticker, sector }) => generateStock(ticker, sector));
     setStocks(initialStocks);
-
-    const interval = setInterval(() => {
-      setStocks(prev => prev.map(stock => ({
-        ...stock,
-        price: stock.price + (Math.random() - 0.5) * 2,
-        change: stock.change + (Math.random() - 0.5) * 0.5,
-      })));
-    }, 4000);
-
-    return () => clearInterval(interval);
   }, []);
 
   const getHeatColor = (changePercent: number) => {
@@ -88,10 +78,10 @@ const MarketHeatmap = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            {t('landing.heatmap.title') || 'Market Heatmap'}
+            Live Market Heatmap
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            {t('landing.heatmap.subtitle') || 'Real-time market performance visualization'}
+            Static snapshot of market performance - upgrade to see real-time data
           </p>
         </div>
 
@@ -99,8 +89,7 @@ const MarketHeatmap = () => {
           {stocks.map((stock, index) => (
             <div
               key={stock.ticker}
-              className={`trading-card p-3 sm:p-4 transition-all duration-300 hover:scale-105 cursor-pointer floating-animation ${getHeatColor(stock.changePercent)} ${getSize(stock.volume)}`}
-              style={{ animationDelay: `${index * 0.05}s` }}
+              className={`trading-card p-3 sm:p-4 transition-all duration-300 hover:scale-105 cursor-pointer ${getHeatColor(stock.changePercent)} ${getSize(stock.volume)}`}
             >
               <div className="flex items-center justify-between mb-2">
                 <div className="font-bold text-sm sm:text-base">{stock.ticker}</div>
@@ -129,10 +118,6 @@ const MarketHeatmap = () => {
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 bg-red-500 rounded"></div>
             <span className="text-slate-400">Losers</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-slate-600 rounded"></div>
-            <span className="text-slate-400">Neutral</span>
           </div>
         </div>
       </div>
