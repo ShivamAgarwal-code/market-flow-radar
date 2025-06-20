@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Fire, Eye, MessageCircle, Share } from 'lucide-react';
 import { useTranslation } from '../contexts/TranslationContext';
@@ -54,7 +53,7 @@ const TrendingSection = () => {
   };
 
   useEffect(() => {
-    const initialItems = Array.from({ length, 8 }, generateTrendingItem);
+    const initialItems = Array.from({ length: 8 }, generateTrendingItem);
     setTrendingItems(initialItems);
 
     const interval = setInterval(() => {
