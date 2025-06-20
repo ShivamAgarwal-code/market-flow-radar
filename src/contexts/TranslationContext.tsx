@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface Translations {
   [key: string]: {
-    [key: string]: string;
+    [key: string]: string | { [key: string]: string };
   };
 }
 
@@ -98,23 +98,15 @@ const translations: Translations = {
     'screener.whaleActivity': 'Whale Activity',
     'screener.sentiment': 'Sentiment',
     
-    // New translations for enhanced features
-    liveTrades: {
-      title: 'Live Whale Trades',
-      subtitle: 'Real-time whale activity and unusual options flow detection'
-    },
-    heatmap: {
-      title: 'Market Heatmap',
-      subtitle: 'Real-time market performance visualization'
-    },
-    whaleSpotlight: {
-      title: 'Whale Spotlight',
-      subtitle: 'Track the most successful whale traders in real-time'
-    },
-    trending: {
-      title: 'Trending Now',
-      subtitle: 'Most discussed whale activities and market insights'
-    },
+    // New flat translations
+    'landing.liveTrades.title': 'Live Whale Trades',
+    'landing.liveTrades.subtitle': 'Real-time whale activity and unusual options flow detection',
+    'landing.heatmap.title': 'Market Heatmap',
+    'landing.heatmap.subtitle': 'Real-time market performance visualization',
+    'landing.whaleSpotlight.title': 'Whale Spotlight',
+    'landing.whaleSpotlight.subtitle': 'Track the most successful whale traders in real-time',
+    'landing.trending.title': 'Trending Now',
+    'landing.trending.subtitle': 'Most discussed whale activities and market insights',
     
     // Language names
     'lang.en': 'English',
@@ -144,22 +136,6 @@ const translations: Translations = {
     'landing.hero.liveTrades': 'Operaciones en Vivo',
     'landing.hero.darkPool': 'Dark Pool',
     'landing.hero.alerts': 'Alertas',
-    
-    // Features
-    'features.title': 'Inteligencia de Trading Profesional',
-    'features.subtitle': 'Obtén las mismas herramientas que usan los traders institucionales para rastrear movimientos del mercado',
-    'features.liveOptionsFlow': 'Flujo de Opciones en Vivo',
-    'features.liveOptionsFlowDesc': 'Rastrea actividad inusual de opciones y movimientos de ballenas en tiempo real',
-    'features.instantAlerts': 'Alertas Instantáneas',
-    'features.instantAlertsDesc': 'Recibe notificaciones de movimientos significativos del mercado y actividad de ballenas',
-    'features.marketScreener': 'Filtrador de Mercado',
-    'features.marketScreenerDesc': 'Filtra y descubre oportunidades en miles de acciones',
-    'features.darkPoolTracking': 'Seguimiento de Dark Pool',
-    'features.darkPoolTrackingDesc': 'Monitorea operaciones institucionales en bloque y liquidez oculta',
-    'features.realTimeData': 'Datos en Tiempo Real',
-    'features.realTimeDataDesc': 'Accede a datos de mercado en vivo con latencia mínima',
-    'features.smartAnalysis': 'Análisis Inteligente',
-    'features.smartAnalysisDesc': 'Insights impulsados por IA y reconocimiento de patrones',
     
     // Language names
     'lang.en': 'English',
@@ -296,16 +272,17 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
   const [language, setLanguage] = useState('en');
 
   const t = (key: string): string => {
-    return translations[language]?.[key] || translations.en[key] || key;
+    const value = translations[language]?.[key] || translations.en[key] || key;
+    return typeof value === 'string' ? value : key;
   };
 
   const availableLanguages = [
-    { code: 'en', name: translations[language]?.['lang.en'] || 'English' },
-    { code: 'es', name: translations[language]?.['lang.es'] || 'Español' },
-    { code: 'fr', name: translations[language]?.['lang.fr'] || 'Français' },
-    { code: 'de', name: translations[language]?.['lang.de'] || 'Deutsch' },
-    { code: 'zh', name: translations[language]?.['lang.zh'] || '中文' },
-    { code: 'ja', name: translations[language]?.['lang.ja'] || '日本語' },
+    { code: 'en', name: translations[language]?.['lang.en'] as string || 'English' },
+    { code: 'es', name: translations[language]?.['lang.es'] as string || 'Español' },
+    { code: 'fr', name: translations[language]?.['lang.fr'] as string || 'Français' },
+    { code: 'de', name: translations[language]?.['lang.de'] as string || 'Deutsch' },
+    { code: 'zh', name: translations[language]?.['lang.zh'] as string || '中文' },
+    { code: 'ja', name: translations[language]?.['lang.ja'] as string || '日本語' },
   ];
 
   return (

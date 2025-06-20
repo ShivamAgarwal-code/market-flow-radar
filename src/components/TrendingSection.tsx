@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
-import { Fire, Eye, MessageCircle, Share } from 'lucide-react';
+import { Flame, Eye, MessageCircle, Share } from 'lucide-react';
 import { useTranslation } from '../contexts/TranslationContext';
 
 interface TrendingItem {
@@ -88,7 +89,7 @@ const TrendingSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center justify-center">
-            <Fire className="w-8 h-8 text-orange-400 mr-3" />
+            <Flame className="w-8 h-8 text-orange-400 mr-3" />
             {t('landing.trending.title') || 'Trending Now'}
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
@@ -111,7 +112,7 @@ const TrendingSection = () => {
                   </span>
                   {item.trending && (
                     <div className="flex items-center space-x-1">
-                      <Fire className="w-4 h-4 text-orange-400" />
+                      <Flame className="w-4 h-4 text-orange-400" />
                       <span className="text-xs text-orange-400 font-semibold">TRENDING</span>
                     </div>
                   )}
