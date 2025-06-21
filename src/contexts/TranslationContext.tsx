@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface Translations {
@@ -31,14 +32,22 @@ const translations: Translations = {
     'nav.register': 'Register',
     
     // Landing Page
-    'landing.hero.title': 'Whale Signal',
-    'landing.hero.subtitle': 'Track institutional money movements, options flow, and market intelligence in real-time',
-    'landing.hero.startTracking': 'Start Tracking',
-    'landing.hero.watchDemo': 'Watch Demo',
+    'landing.hero.title': 'Track Every Whale Move',
+    'landing.hero.subtitle': '$2.5B+ tracked daily. Join elite traders who follow institutional money movements and dark pool activity to maximize profits.',
+    'landing.hero.trustedBy': 'Trusted by 10,000+ Professional Traders',
+    'landing.hero.startTracking': 'Start Tracking Whales',
+    'landing.hero.viewDemo': 'View Live Demo',
+    'landing.hero.bankGrade': 'Bank-Grade Security',
+    'landing.hero.latency': '0.2ms Latency',
+    'landing.hero.accuracy': '99.9% Accuracy',
     'landing.hero.optionsFlow': 'Options Flow',
     'landing.hero.liveTrades': 'Live Trades',
     'landing.hero.darkPool': 'Dark Pool',
     'landing.hero.alerts': 'Alerts',
+    'landing.urgency.title': '🚨 Don\'t Miss Another Whale Move',
+    'landing.urgency.subtitle': 'Every minute you wait, institutional traders are making millions. Join now and get your first whale alert within seconds.',
+    'landing.urgency.alertsSent': '✅ 2,431 alerts sent today',
+    'landing.urgency.getAccess': 'Get Instant Access Now',
     
     // Features
     'features.title': 'Professional Trading Intelligence',
@@ -117,6 +126,24 @@ const translations: Translations = {
     'pricing.dedicatedSupport': 'Dedicated Support',
     'pricing.customIntegration': 'Custom Integration',
     
+    // Index Page
+    'index.title': 'Live Market Intelligence',
+    'index.subtitle': 'Real-time whale activity, options flow, and market insights - Updated',
+    
+    // Testimonials
+    'testimonials.title': 'Trusted by Top Traders Worldwide',
+    'testimonials.subtitle': 'Join thousands of professional traders who rely on Whale Signal for institutional-grade market intelligence',
+    'testimonials.activeTraders': 'Active Traders',
+    'testimonials.volumeTracked': 'Volume Tracked Daily',
+    'testimonials.uptime': 'Uptime',
+    'testimonials.latency': 'Average Latency',
+    
+    // Trending
+    'trending.title': 'Trending Now',
+    'trending.subtitle': 'Most discussed whale activities and market insights',
+    'trending.viewAll': 'View All Trending',
+    'trending.share': 'Share',
+    
     // Common
     'common.topMovers': 'Top Movers',
     'common.marketSentiment': 'Market Sentiment',
@@ -129,6 +156,19 @@ const translations: Translations = {
     'common.volume': 'Volume',
     'common.change': 'Change',
     'common.price': 'Price',
+    'common.loading': 'Loading...',
+    'common.error': 'Error',
+    'common.retry': 'Retry',
+    'common.close': 'Close',
+    'common.save': 'Save',
+    'common.cancel': 'Cancel',
+    'common.confirm': 'Confirm',
+    'common.delete': 'Delete',
+    'common.edit': 'Edit',
+    'common.view': 'View',
+    'common.back': 'Back',
+    'common.next': 'Next',
+    'common.previous': 'Previous',
     
     // Language names
     'lang.en': 'English',
@@ -162,14 +202,22 @@ const translations: Translations = {
     'nav.register': 'Registrarse',
     
     // Landing Page
-    'landing.hero.title': 'Whale Signal',
-    'landing.hero.subtitle': 'Rastrea movimientos de dinero institucional, flujo de opciones e inteligencia de mercado en tiempo real',
-    'landing.hero.startTracking': 'Comenzar Seguimiento',
-    'landing.hero.watchDemo': 'Ver Demo',
+    'landing.hero.title': 'Rastrea Cada Movimiento de Ballenas',
+    'landing.hero.subtitle': '+$2.5B rastreados diariamente. Únete a traders élite que siguen movimientos de dinero institucional y actividad de pools oscuros para maximizar ganancias.',
+    'landing.hero.trustedBy': 'Confiado por 10,000+ Traders Profesionales',
+    'landing.hero.startTracking': 'Comenzar Rastreo de Ballenas',
+    'landing.hero.viewDemo': 'Ver Demo en Vivo',
+    'landing.hero.bankGrade': 'Seguridad de Grado Bancario',
+    'landing.hero.latency': 'Latencia 0.2ms',
+    'landing.hero.accuracy': 'Precisión 99.9%',
     'landing.hero.optionsFlow': 'Flujo de Opciones',
     'landing.hero.liveTrades': 'Operaciones en Vivo',
     'landing.hero.darkPool': 'Pool Oscuro',
     'landing.hero.alerts': 'Alertas',
+    'landing.urgency.title': '🚨 No Te Pierdas Otro Movimiento de Ballenas',
+    'landing.urgency.subtitle': 'Cada minuto que esperas, los traders institucionales están ganando millones. Únete ahora y recibe tu primera alerta de ballenas en segundos.',
+    'landing.urgency.alertsSent': '✅ 2,431 alertas enviadas hoy',
+    'landing.urgency.getAccess': 'Obtener Acceso Instantáneo Ahora',
     
     // Analytics Page
     'analytics.title': 'Análisis Avanzado',
@@ -183,6 +231,9 @@ const translations: Translations = {
     'analytics.viewInteractiveCharts': 'Ver Gráficos Interactivos',
     'analytics.topPerformers': 'Mejores Rendimientos',
     'analytics.riskAnalysis': 'Análisis de Riesgo',
+    'analytics.portfolioBeta': 'Beta del Portafolio',
+    'analytics.volatility': 'Volatilidad',
+    'analytics.correlation': 'Correlación',
     
     // Pricing Page
     'pricing.title': 'Elige tu Plan',
@@ -193,6 +244,23 @@ const translations: Translations = {
     'pricing.month': '/mes',
     'pricing.mostPopular': 'Más Popular',
     'pricing.getStarted': 'Comenzar',
+    'pricing.liveOptionsFlow': 'Flujo de Opciones en Vivo',
+    'pricing.basicAlerts': 'Alertas Básicas',
+    'pricing.marketScreener': 'Filtrador de Mercado',
+    'pricing.emailSupport': 'Soporte por Email',
+    
+    // Index Page
+    'index.title': 'Inteligencia de Mercado en Vivo',
+    'index.subtitle': 'Actividad de ballenas en tiempo real, flujo de opciones e insights de mercado - Actualizado',
+    
+    // Common
+    'common.volume': 'Volumen',
+    'common.change': 'Cambio',
+    'common.price': 'Precio',
+    'common.loading': 'Cargando...',
+    'common.close': 'Cerrar',
+    'common.save': 'Guardar',
+    'common.cancel': 'Cancelar',
     
     // Language names
     'lang.en': 'English',
@@ -226,10 +294,14 @@ const translations: Translations = {
     'nav.register': 'S\'inscrire',
     
     // Landing Page
-    'landing.hero.title': 'Whale Signal',
-    'landing.hero.subtitle': 'Suivez les mouvements d\'argent institutionnel, le flux d\'options et l\'intelligence de marché en temps réel',
-    'landing.hero.startTracking': 'Commencer le Suivi',
-    'landing.hero.watchDemo': 'Voir la Démo',
+    'landing.hero.title': 'Suivez Chaque Mouvement de Baleine',
+    'landing.hero.subtitle': '+2,5B$ suivis quotidiennement. Rejoignez les traders d\'élite qui suivent les mouvements d\'argent institutionnel et l\'activité des pools sombres pour maximiser les profits.',
+    'landing.hero.trustedBy': 'Approuvé par 10 000+ Traders Professionnels',
+    'landing.hero.startTracking': 'Commencer le Suivi des Baleines',
+    'landing.hero.viewDemo': 'Voir la Démo en Direct',
+    'landing.hero.bankGrade': 'Sécurité de Niveau Bancaire',
+    'landing.hero.latency': 'Latence 0,2ms',
+    'landing.hero.accuracy': 'Précision 99,9%',
     
     // Analytics Page
     'analytics.title': 'Analytique Avancée',
@@ -281,10 +353,14 @@ const translations: Translations = {
     'nav.register': 'Registrieren',
     
     // Landing Page
-    'landing.hero.title': 'Whale Signal',
-    'landing.hero.subtitle': 'Verfolgen Sie institutionelle Geldbewegungen, Optionsfluss und Marktintelligenz in Echtzeit',
-    'landing.hero.startTracking': 'Tracking Starten',
-    'landing.hero.watchDemo': 'Demo Ansehen',
+    'landing.hero.title': 'Verfolgen Sie Jeden Wal-Bewegung',
+    'landing.hero.subtitle': '+2,5B$ täglich verfolgt. Schließen Sie sich Elite-Tradern an, die institutionelle Geldbewegungen und Dark-Pool-Aktivitäten verfolgen, um Gewinne zu maximieren.',
+    'landing.hero.trustedBy': 'Vertraut von 10.000+ Professionellen Tradern',
+    'landing.hero.startTracking': 'Wal-Tracking Starten',
+    'landing.hero.viewDemo': 'Live-Demo Ansehen',
+    'landing.hero.bankGrade': 'Bankenklasse-Sicherheit',
+    'landing.hero.latency': '0,2ms Latenz',
+    'landing.hero.accuracy': '99,9% Genauigkeit',
     
     // Analytics Page
     'analytics.title': 'Erweiterte Analytik',
@@ -336,10 +412,14 @@ const translations: Translations = {
     'nav.register': '注册',
     
     // Landing Page
-    'landing.hero.title': 'Whale Signal',
-    'landing.hero.subtitle': '实时追踪机构资金流动、期权流和市场情报',
-    'landing.hero.startTracking': '开始追踪',
-    'landing.hero.watchDemo': '观看演示',
+    'landing.hero.title': '追踪每一个鲸鱼动向',
+    'landing.hero.subtitle': '每日追踪超过25亿美元。加入精英交易者行列，跟踪机构资金流动和暗池活动以最大化利润。',
+    'landing.hero.trustedBy': '受到10,000+专业交易者信赖',
+    'landing.hero.startTracking': '开始追踪鲸鱼',
+    'landing.hero.viewDemo': '观看实时演示',
+    'landing.hero.bankGrade': '银行级安全',
+    'landing.hero.latency': '0.2毫秒延迟',
+    'landing.hero.accuracy': '99.9%准确率',
     
     // Analytics Page
     'analytics.title': '高级分析',
@@ -391,10 +471,14 @@ const translations: Translations = {
     'nav.register': '登録',
     
     // Landing Page
-    'landing.hero.title': 'Whale Signal',
-    'landing.hero.subtitle': '機関投資家の資金移動、オプションフロー、市場インテリジェンスをリアルタイムで追跡',
-    'landing.hero.startTracking': '追跡を開始',
-    'landing.hero.watchDemo': 'デモを見る',
+    'landing.hero.title': 'すべてのクジラの動きを追跡',
+    'landing.hero.subtitle': '毎日25億ドル以上を追跡。機関投資家の資金移動とダークプール活動を追跡して利益を最大化するエリートトレーダーに参加してください。',
+    'landing.hero.trustedBy': '10,000+のプロトレーダーに信頼されています',
+    'landing.hero.startTracking': 'ホエール追跡を開始',
+    'landing.hero.viewDemo': 'ライブデモを見る',
+    'landing.hero.bankGrade': '銀行レベルのセキュリティ',
+    'landing.hero.latency': '0.2ms遅延',
+    'landing.hero.accuracy': '99.9%精度',
     
     // Analytics Page
     'analytics.title': '高度な分析',

@@ -12,17 +12,17 @@ const HeroSection = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 hero-gradient bg-clip-text text-transparent">
-            {t('landing.hero.title')}
+            Whale Signal
           </h1>
           <p className="text-lg sm:text-xl lg:text-2xl text-slate-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
-            {t('landing.hero.subtitle')}
+            Track institutional money movements, options flow, and market intelligence in real-time
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all hover:scale-105 glow-effect">
               {t('landing.hero.startTracking')}
             </button>
             <button className="border border-slate-600 hover:border-slate-500 text-slate-300 hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all hover:scale-105">
-              {t('landing.hero.watchDemo')}
+              {t('landing.hero.viewDemo')}
             </button>
           </div>
         </div>

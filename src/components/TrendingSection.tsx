@@ -90,10 +90,10 @@ const TrendingSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center justify-center">
             <Flame className="w-8 h-8 text-orange-400 mr-3" />
-            {t('landing.trending.title') || 'Trending Now'}
+            {t('trending.title')}
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            {t('landing.trending.subtitle') || 'Most discussed whale activities and market insights'}
+            {t('trending.subtitle')}
           </p>
         </div>
 
@@ -142,7 +142,7 @@ const TrendingSection = () => {
                 </div>
                 <button className="flex items-center space-x-1 hover:text-slate-300 transition-colors">
                   <Share className="w-4 h-4" />
-                  <span>Share</span>
+                  <span>{t('trending.share')}</span>
                 </button>
               </div>
             </div>
@@ -151,7 +151,7 @@ const TrendingSection = () => {
 
         <div className="text-center mt-8">
           <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:scale-105 transition-all duration-200 glow-effect">
-            View All Trending
+            {t('trending.viewAll')}
           </button>
         </div>
       </div>

@@ -9,8 +9,11 @@ import TopMoversWidget from '../components/TopMoversWidget';
 import MarketSentimentWidget from '../components/MarketSentimentWidget';
 import RedirectionLogic from '../components/RedirectionLogic';
 import ChatBox from '../components/ChatBox';
+import { useTranslation } from '../contexts/TranslationContext';
 
 const Index = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <RedirectionLogic />
@@ -20,10 +23,10 @@ const Index = () => {
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8 fade-in-up">
           <h1 className="text-3xl font-bold text-slate-100 mb-2">
-            Live Market Intelligence
+            {t('index.title')}
           </h1>
           <p className="text-slate-400">
-            Real-time whale activity, options flow, and market insights - Updated {new Date().toLocaleString()}
+            {t('index.subtitle')} {new Date().toLocaleString()}
           </p>
         </div>
 

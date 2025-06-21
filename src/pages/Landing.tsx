@@ -17,8 +17,11 @@ import RedirectionLogic from '../components/RedirectionLogic';
 import ChatBox from '../components/ChatBox';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, TrendingUp, Shield, Zap, Target } from 'lucide-react';
+import { useTranslation } from '../contexts/TranslationContext';
 
 const Landing = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-animated relative overflow-hidden">
       {/* Enhanced background with multiple gradients */}
@@ -44,23 +47,23 @@ const Landing = () => {
             <div className="mb-8">
               <div className="inline-flex items-center bg-blue-500/20 border border-blue-500/30 rounded-full px-6 py-2 mb-6">
                 <Star className="w-4 h-4 text-yellow-400 mr-2" />
-                <span className="text-sm text-blue-300 font-semibold">Trusted by 10,000+ Professional Traders</span>
+                <span className="text-sm text-blue-300 font-semibold">{t('landing.hero.trustedBy')}</span>
               </div>
               
               <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold text-white mb-6 hero-gradient bg-clip-text text-transparent">
-                Track Every<br />Whale Move
+                {t('landing.hero.title')}
               </h1>
               <p className="text-xl sm:text-2xl text-slate-300 mb-8 max-w-4xl mx-auto">
-                <strong>$2.5B+ tracked daily.</strong> Join elite traders who follow institutional money movements and dark pool activity to maximize profits.
+                {t('landing.hero.subtitle')}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Link to="/pricing" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 glow-effect flex items-center justify-center">
-                  Start Tracking Whales
+                  {t('landing.hero.startTracking')}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link to="/live-feed" className="border-2 border-white/30 hover:border-white/50 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105">
-                  View Live Demo
+                  {t('landing.hero.viewDemo')}
                 </Link>
               </div>
               
@@ -68,15 +71,15 @@ const Landing = () => {
               <div className="flex items-center justify-center space-x-8 text-sm text-slate-400">
                 <div className="flex items-center">
                   <Shield className="w-4 h-4 mr-2 text-green-400" />
-                  <span>Bank-Grade Security</span>
+                  <span>{t('landing.hero.bankGrade')}</span>
                 </div>
                 <div className="flex items-center">
                   <Zap className="w-4 h-4 mr-2 text-yellow-400" />
-                  <span>0.2ms Latency</span>
+                  <span>{t('landing.hero.latency')}</span>
                 </div>
                 <div className="flex items-center">
                   <Target className="w-4 h-4 mr-2 text-blue-400" />
-                  <span>99.9% Accuracy</span>
+                  <span>{t('landing.hero.accuracy')}</span>
                 </div>
               </div>
             </div>
@@ -98,18 +101,18 @@ const Landing = () => {
           <section className="py-16 bg-gradient-to-r from-red-900/20 to-orange-900/20">
             <div className="max-w-4xl mx-auto px-4 text-center">
               <h2 className="text-3xl font-bold text-white mb-4">
-                🚨 Don't Miss Another Whale Move
+                {t('landing.urgency.title')}
               </h2>
               <p className="text-xl text-slate-300 mb-8">
-                Every minute you wait, institutional traders are making millions. Join now and get your first whale alert within seconds.
+                {t('landing.urgency.subtitle')}
               </p>
               <div className="flex items-center justify-center mb-6">
                 <div className="bg-green-500/20 text-green-300 px-4 py-2 rounded-full font-semibold">
-                  ✅ 2,431 alerts sent today
+                  {t('landing.urgency.alertsSent')}
                 </div>
               </div>
               <Link to="/pricing" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 inline-flex items-center">
-                Get Instant Access Now
+                {t('landing.urgency.getAccess')}
                 <TrendingUp className="ml-2 w-5 h-5" />
               </Link>
             </div>

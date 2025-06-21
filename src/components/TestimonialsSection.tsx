@@ -84,10 +84,10 @@ const TestimonialsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">
-            Trusted by Top Traders Worldwide
+            {t('testimonials.title')}
           </h2>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-            Join thousands of professional traders who rely on Whale Signal for institutional-grade market intelligence
+            {t('testimonials.subtitle')}
           </p>
         </div>
 
@@ -144,19 +144,19 @@ const TestimonialsSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
           <div className="text-center">
             <div className="text-3xl font-bold text-white mb-2">10,000+</div>
-            <div className="text-slate-400">Active Traders</div>
+            <div className="text-slate-400">{t('testimonials.activeTraders')}</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-white mb-2">$2.5B+</div>
-            <div className="text-slate-400">Volume Tracked Daily</div>
+            <div className="text-slate-400">{t('testimonials.volumeTracked')}</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-white mb-2">99.9%</div>
-            <div className="text-slate-400">Uptime</div>
+            <div className="text-slate-400">{t('testimonials.uptime')}</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-white mb-2">0.2ms</div>
-            <div className="text-slate-400">Average Latency</div>
+            <div className="text-slate-400">{t('testimonials.latency')}</div>
           </div>
         </div>
       </div>
