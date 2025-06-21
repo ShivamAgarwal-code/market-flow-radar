@@ -2,43 +2,46 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import { Check, Star, Zap } from 'lucide-react';
+import { useTranslation } from '../contexts/TranslationContext';
 
 const Pricing = () => {
+  const { t } = useTranslation();
+
   const plans = [
     {
-      name: 'Basic',
+      name: t('pricing.basic'),
       price: '$29',
-      period: '/month',
+      period: t('pricing.month'),
       features: [
-        'Live Options Flow',
-        'Basic Alerts',
-        'Market Screener',
-        'Email Support'
+        t('pricing.liveOptionsFlow'),
+        t('pricing.basicAlerts'),
+        t('pricing.marketScreener'),
+        t('pricing.emailSupport')
       ]
     },
     {
-      name: 'Pro',
+      name: t('pricing.pro'),
       price: '$99',
-      period: '/month',
+      period: t('pricing.month'),
       popular: true,
       features: [
-        'Everything in Basic',
-        'Dark Pool Tracking',
-        'Whale Alerts',
-        'Advanced Analytics',
-        'Priority Support'
+        t('pricing.everythingInBasic'),
+        t('pricing.darkPoolTracking'),
+        t('pricing.whaleAlerts'),
+        t('pricing.advancedAnalytics'),
+        t('pricing.prioritySupport')
       ]
     },
     {
-      name: 'Enterprise',
+      name: t('pricing.enterprise'),
       price: '$299',
-      period: '/month',
+      period: t('pricing.month'),
       features: [
-        'Everything in Pro',
-        'API Access',
-        'Custom Alerts',
-        'Dedicated Support',
-        'Custom Integration'
+        t('pricing.everythingInPro'),
+        t('pricing.apiAccess'),
+        t('pricing.customAlerts'),
+        t('pricing.dedicatedSupport'),
+        t('pricing.customIntegration')
       ]
     }
   ];
@@ -49,8 +52,8 @@ const Pricing = () => {
       
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-white mb-4">Choose Your Plan</h1>
-          <p className="text-xl text-slate-400">Unlock the power of institutional-grade trading intelligence</p>
+          <h1 className="text-4xl font-bold text-white mb-4">{t('pricing.title')}</h1>
+          <p className="text-xl text-slate-400">{t('pricing.subtitle')}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -60,7 +63,7 @@ const Pricing = () => {
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <span className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center">
                     <Star className="w-4 h-4 mr-1" />
-                    Most Popular
+                    {t('pricing.mostPopular')}
                   </span>
                 </div>
               )}
@@ -84,7 +87,7 @@ const Pricing = () => {
                   ? 'bg-blue-600 hover:bg-blue-700 text-white' 
                   : 'border border-slate-600 text-slate-300 hover:border-slate-500 hover:text-white'
               }`}>
-                Get Started
+                {t('pricing.getStarted')}
               </button>
             </div>
           ))}

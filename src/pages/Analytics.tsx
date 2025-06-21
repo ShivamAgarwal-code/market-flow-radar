@@ -4,16 +4,18 @@ import Navigation from '../components/Navigation';
 import LoginModal from '../components/LoginModal';
 import RedirectionLogic from '../components/RedirectionLogic';
 import { BarChart3, LineChart, PieChart, TrendingUp, TrendingDown, Activity, Lock } from 'lucide-react';
+import { useTranslation } from '../contexts/TranslationContext';
 
 const Analytics = () => {
+  const { t } = useTranslation();
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   const mockAnalyticsData = {
     performanceMetrics: [
-      { metric: 'Win Rate', value: '68.4%', change: '+2.1%', trend: 'up' },
-      { metric: 'Average Return', value: '12.7%', change: '+0.8%', trend: 'up' },
-      { metric: 'Sharpe Ratio', value: '1.85', change: '-0.05', trend: 'down' },
-      { metric: 'Max Drawdown', value: '8.3%', change: '+1.2%', trend: 'down' }
+      { metric: t('analytics.winRate'), value: '68.4%', change: '+2.1%', trend: 'up' },
+      { metric: t('analytics.averageReturn'), value: '12.7%', change: '+0.8%', trend: 'up' },
+      { metric: t('analytics.sharpeRatio'), value: '1.85', change: '-0.05', trend: 'down' },
+      { metric: t('analytics.maxDrawdown'), value: '8.3%', change: '+1.2%', trend: 'down' }
     ],
     topPerformers: [
       { symbol: 'NVDA', return: '+24.3%', volume: '2.1M' },
@@ -30,8 +32,8 @@ const Analytics = () => {
       
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-2xl md:text-3xl font-bold text-slate-100 mb-2">Advanced Analytics</h1>
-          <p className="text-slate-400">Deep dive into market trends and trading patterns</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-100 mb-2">{t('analytics.title')}</h1>
+          <p className="text-slate-400">{t('analytics.subtitle')}</p>
         </div>
 
         {/* Performance Overview */}
@@ -57,19 +59,19 @@ const Analytics = () => {
         {/* Chart Placeholder */}
         <div className="trading-card p-6 mb-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-white mb-4 sm:mb-0">Portfolio Performance</h3>
+            <h3 className="text-xl font-semibold text-white mb-4 sm:mb-0">{t('analytics.portfolioPerformance')}</h3>
             <button 
               onClick={() => setShowLoginModal(true)}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold"
             >
               <LineChart className="w-4 h-4 mr-2 inline" />
-              View Interactive Charts
+              {t('analytics.viewInteractiveCharts')}
             </button>
           </div>
           <div className="h-64 bg-slate-800/50 rounded-lg flex items-center justify-center">
             <div className="text-center">
               <BarChart3 className="w-16 h-16 text-slate-600 mx-auto mb-4" />
-              <p className="text-slate-400">Interactive charts available with premium access</p>
+              <p className="text-slate-400">{t('analytics.interactiveChartsDesc')}</p>
             </div>
           </div>
         </div>
@@ -77,7 +79,7 @@ const Analytics = () => {
         {/* Top Performers */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <div className="trading-card p-6">
-            <h3 className="text-xl font-semibold text-white mb-6">Top Performers</h3>
+            <h3 className="text-xl font-semibold text-white mb-6">{t('analytics.topPerformers')}</h3>
             <div className="space-y-4">
               {mockAnalyticsData.topPerformers.map((stock, index) => (
                 <div key={index} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
@@ -89,7 +91,7 @@ const Analytics = () => {
                   </div>
                   <div className="text-right">
                     <div className="text-green-400 font-semibold">{stock.return}</div>
-                    <div className="text-slate-400 text-sm">{stock.volume} vol</div>
+                    <div className="text-slate-400 text-sm">{stock.volume} {t('common.volume').toLowerCase()}</div>
                   </div>
                 </div>
               ))}
@@ -97,11 +99,11 @@ const Analytics = () => {
           </div>
 
           <div className="trading-card p-6">
-            <h3 className="text-xl font-semibold text-white mb-6">Risk Analysis</h3>
+            <h3 className="text-xl font-semibold text-white mb-6">{t('analytics.riskAnalysis')}</h3>
             <div className="space-y-4">
               <div className="p-4 bg-slate-800/50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-white">Portfolio Beta</span>
+                  <span className="text-white">{t('analytics.portfolioBeta')}</span>
                   <span className="text-blue-400">1.23</span>
                 </div>
                 <div className="w-full bg-slate-700 rounded-full h-2">
@@ -111,7 +113,7 @@ const Analytics = () => {
               
               <div className="p-4 bg-slate-800/50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-white">Volatility</span>
+                  <span className="text-white">{t('analytics.volatility')}</span>
                   <span className="text-yellow-400">15.8%</span>
                 </div>
                 <div className="w-full bg-slate-700 rounded-full h-2">
@@ -121,7 +123,7 @@ const Analytics = () => {
               
               <div className="p-4 bg-slate-800/50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-white">Correlation</span>
+                  <span className="text-white">{t('analytics.correlation')}</span>
                   <span className="text-green-400">0.78</span>
                 </div>
                 <div className="w-full bg-slate-700 rounded-full h-2">
@@ -141,8 +143,8 @@ const Analytics = () => {
             <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-500/30 transition-colors">
               <Lock className="w-6 h-6 text-purple-400" />
             </div>
-            <h3 className="text-lg font-semibold text-white mb-2">Advanced Metrics</h3>
-            <p className="text-slate-400 text-sm">Access detailed analytics and custom indicators</p>
+            <h3 className="text-lg font-semibold text-white mb-2">{t('analytics.advancedMetrics')}</h3>
+            <p className="text-slate-400 text-sm">{t('analytics.advancedMetricsDesc')}</p>
           </button>
           
           <button 
@@ -152,8 +154,8 @@ const Analytics = () => {
             <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-500/30 transition-colors">
               <PieChart className="w-6 h-6 text-blue-400" />
             </div>
-            <h3 className="text-lg font-semibold text-white mb-2">Portfolio Analysis</h3>
-            <p className="text-slate-400 text-sm">Deep dive into portfolio composition and allocation</p>
+            <h3 className="text-lg font-semibold text-white mb-2">{t('analytics.portfolioAnalysis')}</h3>
+            <p className="text-slate-400 text-sm">{t('analytics.portfolioAnalysisDesc')}</p>
           </button>
           
           <button 
@@ -163,8 +165,8 @@ const Analytics = () => {
             <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/30 transition-colors">
               <Activity className="w-6 h-6 text-green-400" />
             </div>
-            <h3 className="text-lg font-semibold text-white mb-2">Real-time Alerts</h3>
-            <p className="text-slate-400 text-sm">Get notified of important market movements</p>
+            <h3 className="text-lg font-semibold text-white mb-2">{t('analytics.realTimeAlerts')}</h3>
+            <p className="text-slate-400 text-sm">{t('analytics.realTimeAlertsDesc')}</p>
           </button>
         </div>
       </main>

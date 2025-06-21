@@ -11,23 +11,23 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const mainNavItems = [
-    { path: '/live-feed', label: 'Live Feed', icon: Activity },
-    { path: '/options-flow', label: 'Options Flow', icon: TrendingUp },
-    { path: '/screener', label: 'Screener', icon: BarChart3 },
-    { path: '/alerts', label: 'Alerts', icon: Bell }
+    { path: '/live-feed', label: t('nav.liveFeed'), icon: Activity },
+    { path: '/options-flow', label: t('nav.optionsFlow'), icon: TrendingUp },
+    { path: '/screener', label: t('nav.screener'), icon: BarChart3 },
+    { path: '/alerts', label: t('nav.alerts'), icon: Bell }
   ];
 
   const moreNavItems = [
-    { path: '/portfolio', label: 'Portfolio', icon: PieChart },
-    { path: '/dark-pool', label: 'Dark Pool', icon: Shield },
-    { path: '/whale-tracker', label: 'Whale Tracker', icon: Activity },
-    { path: '/analytics', label: 'Analytics', icon: BarChart3 },
-    { path: '/signals', label: 'Signals', icon: Target },
-    { path: '/news', label: 'News', icon: Newspaper },
-    { path: '/education', label: 'Education', icon: BookOpen },
-    { path: '/risk', label: 'Risk', icon: Shield },
-    { path: '/backtesting', label: 'Backtesting', icon: BarChart3 },
-    { path: '/pricing', label: 'Pricing', icon: DollarSign }
+    { path: '/portfolio', label: t('nav.portfolio'), icon: PieChart },
+    { path: '/dark-pool', label: t('nav.darkPool'), icon: Shield },
+    { path: '/whale-tracker', label: t('nav.whaleTracker'), icon: Activity },
+    { path: '/analytics', label: t('nav.analytics'), icon: BarChart3 },
+    { path: '/signals', label: t('nav.signals'), icon: Target },
+    { path: '/news', label: t('nav.news'), icon: Newspaper },
+    { path: '/education', label: t('nav.education'), icon: BookOpen },
+    { path: '/risk', label: t('nav.risk'), icon: Shield },
+    { path: '/backtesting', label: t('nav.backtesting'), icon: BarChart3 },
+    { path: '/pricing', label: t('nav.pricing'), icon: DollarSign }
   ];
 
   const allNavItems = [...mainNavItems, ...moreNavItems];
@@ -65,7 +65,7 @@ const Navigation = () => {
               <div className="relative group">
                 <button className="flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 whitespace-nowrap">
                   <Menu size={14} />
-                  <span>More</span>
+                  <span>{t('nav.more')}</span>
                 </button>
                 <div className="absolute top-full left-0 mt-1 w-48 bg-slate-800 border border-slate-700 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   {moreNavItems.map(({ path, label, icon: Icon }) => (
@@ -90,14 +90,14 @@ const Navigation = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={16} />
               <input
                 type="text"
-                placeholder="Search..."
+                placeholder={t('nav.searchPlaceholder')}
                 className="bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 w-40"
               />
             </div>
             
             {/* Market Status */}
             <div className="text-xs text-slate-400 hidden xl:block">
-              <div>Market <span className="text-emerald-400">Open</span></div>
+              <div>{t('nav.marketStatus')} <span className="text-emerald-400">{t('nav.open')}</span></div>
             </div>
 
             <LanguageSelector />
@@ -106,7 +106,7 @@ const Navigation = () => {
               to="/pricing" 
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap"
             >
-              Register
+              {t('nav.register')}
             </Link>
           </div>
 
@@ -131,7 +131,7 @@ const Navigation = () => {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={16} />
                 <input
                   type="text"
-                  placeholder="Search..."
+                  placeholder={t('nav.searchPlaceholder')}
                   className="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                 />
               </div>
@@ -158,7 +158,7 @@ const Navigation = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg text-center font-semibold"
                 >
-                  Register Now
+                  {t('nav.register')} Now
                 </Link>
               </div>
             </div>
