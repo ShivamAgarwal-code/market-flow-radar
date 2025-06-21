@@ -31,36 +31,39 @@ const Navigation = () => {
     <nav className="bg-slate-800/90 backdrop-blur-sm border-b border-slate-700/50 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center min-w-0 flex-1">
-            <Link to="/" className="text-xl font-bold text-blue-400 flex-shrink-0">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link to="/" className="text-lg sm:text-xl font-bold text-blue-400">
               WhaleSignal
             </Link>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-4 ml-8 flex-1 min-w-0">
-              {navItems.slice(0, 8).map(({ path, label, icon: Icon }) => (
+          </div>
+          
+          {/* Desktop Navigation - Hidden on mobile */}
+          <div className="hidden lg:flex items-center justify-center flex-1 px-8">
+            <div className="flex items-center space-x-1 xl:space-x-2">
+              {navItems.slice(0, 6).map(({ path, label, icon: Icon }) => (
                 <Link
                   key={path}
                   to={path}
-                  className={`flex items-center space-x-1 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap
+                  className={`flex items-center space-x-1 px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-colors whitespace-nowrap
                     ${location.pathname === path 
                       ? 'bg-blue-500/20 text-blue-300' 
                       : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
                     }`}
                 >
                   <Icon size={14} />
-                  <span>{label}</span>
+                  <span className="hidden xl:inline">{label}</span>
                 </Link>
               ))}
               
               {/* More dropdown for remaining items */}
               <div className="relative group">
-                <button className="flex items-center space-x-1 px-2 py-2 rounded-md text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 whitespace-nowrap">
+                <button className="flex items-center space-x-1 px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 whitespace-nowrap">
                   <Menu size={14} />
-                  <span>More</span>
+                  <span className="hidden xl:inline">More</span>
                 </button>
                 <div className="absolute top-full left-0 mt-1 w-48 bg-slate-800 border border-slate-700 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  {navItems.slice(8).map(({ path, label, icon: Icon }) => (
+                  {navItems.slice(6).map(({ path, label, icon: Icon }) => (
                     <Link
                       key={path}
                       to={path}
@@ -76,32 +79,34 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Right Side */}
-          <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
-            <div className="relative">
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-4 flex-shrink-0">
+            {/* Search - Hidden on smaller screens */}
+            <div className="relative hidden lg:block">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={16} />
               <input
                 type="text"
                 placeholder="Search..."
-                className="bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 w-48"
+                className="bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 w-36 xl:w-48"
               />
             </div>
             
-            <div className="text-xs text-slate-400 hidden lg:block">
-              <div>Market Status <span className="text-emerald-400">Open</span></div>
+            {/* Market Status - Hidden on smaller screens */}
+            <div className="text-xs text-slate-400 hidden xl:block">
+              <div>Market <span className="text-emerald-400">Open</span></div>
             </div>
 
             <LanguageSelector />
             
             <Link 
               to="/pricing" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-3 lg:px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap"
             >
               Register
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2 flex-shrink-0">
+          {/* Mobile menu button and language selector */}
+          <div className="flex items-center space-x-2 md:hidden">
             <LanguageSelector />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -114,8 +119,8 @@ const Navigation = () => {
 
         {/* Mobile menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 border-t border-slate-700/50 max-h-96 overflow-y-auto">
+          <div className="md:hidden border-t border-slate-700/50">
+            <div className="px-2 pt-2 pb-3 space-y-1 max-h-96 overflow-y-auto">
               {/* Search bar for mobile */}
               <div className="relative mb-4">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={16} />
@@ -131,7 +136,7 @@ const Navigation = () => {
                   key={path}
                   to={path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center space-x-3 px-3 py-2 rounded-md text-base font-medium transition-colors
+                  className={`flex items-center space-x-3 px-3 py-3 rounded-md text-base font-medium transition-colors
                     ${location.pathname === path 
                       ? 'bg-blue-500/20 text-blue-300' 
                       : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
