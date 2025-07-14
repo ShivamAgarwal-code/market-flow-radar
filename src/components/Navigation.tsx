@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { TrendingUp, BarChart3, Activity, Bell, Search, Menu, X, PieChart, Shield, Newspaper, Target, BookOpen, DollarSign } from 'lucide-react';
@@ -38,7 +37,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-lg sm:text-xl font-bold text-blue-400">
+            <Link to="/" className="text-lg sm:text-xl font-bold text-blue-400 truncate">
               WhaleSignal
             </Link>
           </div>
@@ -113,7 +112,7 @@ const Navigation = () => {
             
             <Link 
               to="/pricing" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-colors"
             >
               {t('nav.register')}
             </Link>
@@ -124,7 +123,8 @@ const Navigation = () => {
             <LanguageSelector />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700/50"
+              className="p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700/50 transition-colors"
+              aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -134,25 +134,30 @@ const Navigation = () => {
         {/* Mobile menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-slate-700/50">
-            <div className="px-2 pt-2 pb-3 space-y-1 max-h-96 overflow-y-auto">
+            <div className="px-2 pt-2 pb-3 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
               {/* Search bar for mobile */}
               <div className="relative mb-4">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={16} />
-              <input
-                type="text"
-                placeholder={t('nav.searchPlaceholder')}
-                className="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter') {
-                    const searchTerm = (e.target as HTMLInputElement).value;
-                    if (searchTerm.trim()) {
-                      window.location.href = `/screener?search=${encodeURIComponent(searchTerm)}`;
-                      setIsMobileMenuOpen(false);
-                      (e.target as HTMLInputElement).value = '';
+                <input
+                  type="text"
+                  placeholder={t('nav.searchPlaceholder')}
+                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      const searchTerm = (e.target as HTMLInputElement).value;
+                      if (searchTerm.trim()) {
+                        window.location.href = `/screener?search=${encodeURIComponent(searchTerm)}`;
+                        setIsMobileMenuOpen(false);
+                        (e.target as HTMLInputElement).value = '';
+                      }
                     }
-                  }
-                }}
-              />
+                  }}
+                />
+              </div>
+              
+              {/* Market Status for mobile */}
+              <div className="text-xs text-slate-400 mb-4 text-center">
+                {t('nav.marketStatus')} <span className="text-emerald-400">{t('nav.open')}</span>
               </div>
               
               {allNavItems.map(({ path, label, icon: Icon }) => (
@@ -175,7 +180,7 @@ const Navigation = () => {
                 <Link
                   to="/pricing"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg text-center font-semibold"
+                  className="block w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg text-center font-semibold transition-colors"
                 >
                   {t('nav.register')} Now
                 </Link>
