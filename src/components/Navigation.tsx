@@ -97,6 +97,7 @@ const Navigation = () => {
                     const searchTerm = (e.target as HTMLInputElement).value;
                     if (searchTerm.trim()) {
                       window.location.href = `/screener?search=${encodeURIComponent(searchTerm)}`;
+                      (e.target as HTMLInputElement).value = '';
                     }
                   }
                 }}
@@ -146,6 +147,8 @@ const Navigation = () => {
                     const searchTerm = (e.target as HTMLInputElement).value;
                     if (searchTerm.trim()) {
                       window.location.href = `/screener?search=${encodeURIComponent(searchTerm)}`;
+                      setIsMobileMenuOpen(false);
+                      (e.target as HTMLInputElement).value = '';
                     }
                   }
                 }}

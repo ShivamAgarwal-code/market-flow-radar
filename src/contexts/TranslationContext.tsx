@@ -498,13 +498,39 @@ const translations: Translations = {
     'pricing.mostPopular': '最も人気',
     'pricing.getStarted': '始める',
     
-    // Language names
-    'lang.en': 'English',
-    'lang.es': 'Español',
-    'lang.fr': 'Français',
-    'lang.de': 'Deutsch',
-    'lang.zh': '中文',
-    'lang.ja': '日本語',
+    // Options Flow
+    'optionsFlow.title': 'Flujo de Opciones en Tiempo Real',
+    'optionsFlow.subtitle': 'Seguimiento de actividad inusual de opciones',
+    'optionsFlow.allOptions': 'Todas las Opciones',
+    'optionsFlow.callsOnly': 'Solo Calls',
+    'optionsFlow.putsOnly': 'Solo Puts',
+    'optionsFlow.ticker': 'Símbolo',
+    'optionsFlow.type': 'Tipo',
+    'optionsFlow.strike': 'Strike',
+    'optionsFlow.expiry': 'Vencimiento',
+    'optionsFlow.size': 'Tamaño',
+    'optionsFlow.premium': 'Prima',
+    'optionsFlow.time': 'Hora',
+    
+    // Screener
+    'screener.title': 'Escáner de Acciones',
+    'screener.subtitle': 'Encuentra acciones con actividad de ballenas',
+    'screener.searchPlaceholder': 'Buscar acciones...',
+    'screener.allStocks': 'Todas las Acciones',
+    'screener.highWhaleActivity': 'Alta Actividad de Ballenas',
+    'screener.highVolume': 'Alto Volumen',
+    'screener.bigMovers': 'Grandes Movimientos',
+    'screener.stock': 'Acción',
+    'screener.price': 'Precio',
+    'screener.change': 'Cambio',
+    'screener.volume': 'Volumen',
+    'screener.marketCap': 'Cap. Mercado',
+    'screener.whaleActivity': 'Actividad Ballenas',
+    'screener.sentiment': 'Sentimiento',
+    
+    // Index/Live Feed
+    'index.title': 'Alimentación en Vivo',
+    'index.subtitle': 'Datos de mercado en tiempo real actualizados en'
   },
 };
 
