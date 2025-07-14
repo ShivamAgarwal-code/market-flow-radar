@@ -25,6 +25,15 @@ const Screener = () => {
   const [filter, setFilter] = useState<'all' | 'whale' | 'volume' | 'movers'>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Check for URL search parameter
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get('search');
+    if (searchParam) {
+      setSearchTerm(searchParam);
+    }
+  }, []);
+
   const generateStock = (): Stock => {
     const tickers = [
       { symbol: 'AAPL', company: 'Apple Inc.' },
@@ -114,13 +123,23 @@ const Screener = () => {
         <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-6 sm:mb-8">
           <div className="relative w-full md:flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-            <input
-              type="text"
-              placeholder={t('screener.searchPlaceholder')}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50"
-            />
+              <input
+                type="text"
+                placeholder={t('screener.searchPlaceholder')}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter' && searchTerm.trim()) {
+                    // Trigger search animation or action
+                    const input = e.target as HTMLInputElement;
+                    input.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                      input.style.transform = 'scale(1)';
+                    }, 150);
+                  }
+                }}
+                className="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-150"
+              />
           </div>
           
           <div className="flex items-center space-x-2 w-full md:w-auto">
@@ -154,8 +173,12 @@ const Screener = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredStocks.map((stock) => (
-                  <tr key={stock.id} className="data-row border-b border-slate-700/30">
+                {filteredStocks.map((stock, index) => (
+                  <tr 
+                    key={stock.id} 
+                    className="border-b border-slate-700/30 hover:bg-slate-800/50 transition-all duration-200 animate-fade-in"
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
                     <td className="py-3 sm:py-4 px-3 sm:px-4">
                       <div>
                         <div className="font-semibold text-slate-100 text-sm sm:text-base">{stock.ticker}</div>

@@ -15,6 +15,7 @@ const LanguageSelector = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 transition-colors"
       >
+        {currentLanguage?.flag && <span className="text-sm">{currentLanguage.flag}</span>}
         <Globe size={16} />
         <span className="hidden sm:inline">{currentLanguage?.name}</span>
         <ChevronDown size={14} />
@@ -36,7 +37,10 @@ const LanguageSelector = () => {
                     : 'text-slate-300 hover:bg-slate-700/50 hover:text-white'
                 }`}
               >
-                {lang.name}
+                <div className="flex items-center space-x-2">
+                  {lang.flag && <span>{lang.flag}</span>}
+                  <span>{lang.name}</span>
+                </div>
               </button>
             ))}
           </div>

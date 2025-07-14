@@ -91,7 +91,15 @@ const Navigation = () => {
               <input
                 type="text"
                 placeholder={t('nav.searchPlaceholder')}
-                className="bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 w-40"
+                className="bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 w-40"
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    const searchTerm = (e.target as HTMLInputElement).value;
+                    if (searchTerm.trim()) {
+                      window.location.href = `/screener?search=${encodeURIComponent(searchTerm)}`;
+                    }
+                  }
+                }}
               />
             </div>
             
@@ -129,11 +137,19 @@ const Navigation = () => {
               {/* Search bar for mobile */}
               <div className="relative mb-4">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={16} />
-                <input
-                  type="text"
-                  placeholder={t('nav.searchPlaceholder')}
-                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                />
+              <input
+                type="text"
+                placeholder={t('nav.searchPlaceholder')}
+                className="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    const searchTerm = (e.target as HTMLInputElement).value;
+                    if (searchTerm.trim()) {
+                      window.location.href = `/screener?search=${encodeURIComponent(searchTerm)}`;
+                    }
+                  }
+                }}
+              />
               </div>
               
               {allNavItems.map(({ path, label, icon: Icon }) => (

@@ -508,11 +508,17 @@ const translations: Translations = {
   },
 };
 
+interface AvailableLanguage {
+  code: string;
+  name: string;
+  flag?: string;
+}
+
 interface TranslationContextType {
   language: string;
   setLanguage: (lang: string) => void;
   t: (key: string) => string;
-  availableLanguages: { code: string; name: string }[];
+  availableLanguages: AvailableLanguage[];
 }
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
@@ -537,13 +543,9 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
     return typeof value === 'string' ? value : key;
   };
 
-  const availableLanguages = [
-    { code: 'en', name: translations[language]?.['lang.en'] as string || 'English' },
-    { code: 'es', name: translations[language]?.['lang.es'] as string || 'Español' },
-    { code: 'fr', name: translations[language]?.['lang.fr'] as string || 'Français' },
-    { code: 'de', name: translations[language]?.['lang.de'] as string || 'Deutsch' },
-    { code: 'zh', name: translations[language]?.['lang.zh'] as string || '中文' },
-    { code: 'ja', name: translations[language]?.['lang.ja'] as string || '日本語' },
+  const availableLanguages: AvailableLanguage[] = [
+    { code: 'en', name: translations[language]?.['lang.en'] as string || 'English', flag: '🇺🇸' },
+    { code: 'es', name: translations[language]?.['lang.es'] as string || 'Español', flag: '🇪🇸' }
   ];
 
   return (

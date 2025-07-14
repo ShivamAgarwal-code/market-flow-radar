@@ -14,7 +14,7 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import VideoShowcaseSection from '../components/VideoShowcaseSection';
 import Footer from '../components/Footer';
 import RedirectionLogic from '../components/RedirectionLogic';
-import ChatBox from '../components/ChatBox';
+import RealChatBox from '../components/RealChatBox';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, TrendingUp, Shield, Zap, Target } from 'lucide-react';
 import { useTranslation } from '../contexts/TranslationContext';
@@ -58,11 +58,11 @@ const Landing = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <Link to="/pricing" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 glow-effect flex items-center justify-center">
+                <Link to="/live-feed" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 glow-effect flex items-center justify-center">
                   {t('landing.hero.startTracking')}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
-                <Link to="/live-feed" className="border-2 border-white/30 hover:border-white/50 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105">
+                <Link to="/options-flow" className="border-2 border-white/30 hover:border-white/50 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105">
                   {t('landing.hero.viewDemo')}
                 </Link>
               </div>
@@ -111,7 +111,7 @@ const Landing = () => {
                   {t('landing.urgency.alertsSent')}
                 </div>
               </div>
-              <Link to="/pricing" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 inline-flex items-center">
+              <Link to="/screener" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 inline-flex items-center">
                 {t('landing.urgency.getAccess')}
                 <TrendingUp className="ml-2 w-5 h-5" />
               </Link>
@@ -122,7 +122,7 @@ const Landing = () => {
         </main>
         
         <Footer />
-        <ChatBox />
+        <RealChatBox />
       </div>
     </div>
   );

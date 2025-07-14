@@ -8,7 +8,7 @@ import LiveNewsSection from '../components/LiveNewsSection';
 import TopMoversWidget from '../components/TopMoversWidget';
 import MarketSentimentWidget from '../components/MarketSentimentWidget';
 import RedirectionLogic from '../components/RedirectionLogic';
-import ChatBox from '../components/ChatBox';
+import RealChatBox from '../components/RealChatBox';
 import { useTranslation } from '../contexts/TranslationContext';
 
 const Index = () => {
@@ -45,7 +45,7 @@ const Index = () => {
         </div>
       </main>
       
-      <ChatBox />
+      <RealChatBox />
     </div>
   );
 };
