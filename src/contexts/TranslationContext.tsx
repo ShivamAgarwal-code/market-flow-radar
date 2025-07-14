@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface Translations {
@@ -48,6 +47,10 @@ const translations: Translations = {
     'landing.urgency.subtitle': 'Every minute you wait, institutional traders are making millions. Join now and get your first whale alert within seconds.',
     'landing.urgency.alertsSent': '✅ 2,431 alerts sent today',
     'landing.urgency.getAccess': 'Get Instant Access Now',
+    'landing.liveTrades.title': 'Live Whale Trades',
+    'landing.liveTrades.subtitle': 'Real-time whale activity and unusual options flow detection',
+    'landing.whaleSpotlight.title': 'Whale Spotlight',
+    'landing.whaleSpotlight.subtitle': 'Track the most successful whale traders in real-time',
     
     // Features
     'features.title': 'Professional Trading Intelligence',
@@ -144,6 +147,163 @@ const translations: Translations = {
     'trending.viewAll': 'View All Trending',
     'trending.share': 'Share',
     
+    // Options Flow
+    'optionsFlow.title': 'Real-Time Options Flow',
+    'optionsFlow.subtitle': 'Track unusual options activity and whale movements',
+    'optionsFlow.allOptions': 'All Options',
+    'optionsFlow.callsOnly': 'Calls Only',
+    'optionsFlow.putsOnly': 'Puts Only',
+    'optionsFlow.ticker': 'Ticker',
+    'optionsFlow.type': 'Type',
+    'optionsFlow.strike': 'Strike',
+    'optionsFlow.expiry': 'Expiry',
+    'optionsFlow.size': 'Size',
+    'optionsFlow.premium': 'Premium',
+    'optionsFlow.time': 'Time',
+    
+    // Screener
+    'screener.title': 'Stock Screener',
+    'screener.subtitle': 'Find stocks with whale activity',
+    'screener.searchPlaceholder': 'Search stocks...',
+    'screener.allStocks': 'All Stocks',
+    'screener.highWhaleActivity': 'High Whale Activity',
+    'screener.highVolume': 'High Volume',
+    'screener.bigMovers': 'Big Movers',
+    'screener.stock': 'Stock',
+    'screener.price': 'Price',
+    'screener.change': 'Change',
+    'screener.volume': 'Volume',
+    'screener.marketCap': 'Market Cap',
+    'screener.whaleActivity': 'Whale Activity',
+    'screener.sentiment': 'Sentiment',
+    
+    // Alerts
+    'alerts.title': 'Trading Alerts',
+    'alerts.subtitle': 'Real-time notifications for market-moving events',
+    'alerts.unread': 'Unread Alerts',
+    'alerts.whale': 'Whale Alerts',
+    'alerts.highPriority': 'High Priority',
+    'alerts.coverage': 'Coverage',
+    'alerts.allAlerts': 'All Alerts',
+    'alerts.unreadFilter': 'Unread',
+    'alerts.whaleActivity': 'Whale Activity',
+    'alerts.highPriorityFilter': 'High Priority',
+    'alerts.markAllRead': 'Mark All Read',
+    'alerts.filterAlerts': 'Filter Alerts',
+    
+    // Portfolio
+    'portfolio.title': 'Portfolio Management',
+    'portfolio.subtitle': 'Track and analyze your trading performance',
+    'portfolio.totalValue': 'Total Value',
+    'portfolio.positions': 'Positions',
+    'portfolio.performance': 'Performance',
+    'portfolio.currentHoldings': 'Current Holdings',
+    'portfolio.addPosition': 'Add Position',
+    'portfolio.symbol': 'Symbol',
+    'portfolio.shares': 'Shares',
+    'portfolio.currentPrice': 'Current Price',
+    'portfolio.avgPrice': 'Avg Price',
+    'portfolio.pnl': 'P&L',
+    'portfolio.performanceAnalytics': 'Performance Analytics',
+    'portfolio.riskAnalysis': 'Risk Analysis',
+    'portfolio.exportData': 'Export Data',
+    
+    // Dark Pool
+    'darkPool.title': 'Dark Pool Tracking',
+    'darkPool.subtitle': 'Monitor institutional trading activity in dark pools',
+    'darkPool.totalDarkVolume': 'Total Dark Volume',
+    'darkPool.activeVenues': 'Active Venues',
+    'darkPool.marketShare': 'Market Share',
+    'darkPool.premiumFeature': 'Premium Feature',
+    'darkPool.premiumAccess': 'Get Premium Access',
+    'darkPool.recentActivity': 'Recent Dark Pool Activity',
+    'darkPool.premiumPreview': 'Premium Preview',
+    'darkPool.viewAllData': 'View All Dark Pool Data',
+    
+    // Whale Tracker
+    'whaleTracker.title': 'Whale Tracker',
+    'whaleTracker.subtitle': 'Follow the biggest market movers in real-time',
+    'whaleTracker.totalWhaleVolume': 'Total Whale Volume',
+    'whaleTracker.activeWhales': 'Active Whales',
+    'whaleTracker.avgConfidence': 'Avg Confidence',
+    'whaleTracker.signalAccuracy': 'Signal accuracy',
+    'whaleTracker.liveActivity': 'Live Whale Activity',
+    'whaleTracker.realTimeUpdates': 'Real-time updates',
+    'whaleTracker.trackAllWhales': 'Track All Whales',
+    'whaleTracker.topTargets': 'Top Whale Targets',
+    'whaleTracker.alertSettings': 'Whale Alert Settings',
+    'whaleTracker.minimumVolume': 'Minimum Volume',
+    'whaleTracker.confidenceLevel': 'Confidence Level',
+    'whaleTracker.realTimeAlerts': 'Real-time Alerts',
+    'whaleTracker.customizeAlerts': 'Customize Alerts',
+    
+    // Trading Signals
+    'signals.title': 'Trading Signals',
+    'signals.subtitle': 'AI-powered trading signals based on whale activity',
+    'signals.totalSignals': 'Total Signals',
+    'signals.accuracy': 'Accuracy',
+    'signals.activeSignals': 'Active Signals',
+    'signals.avgReturn': 'Avg Return',
+    'signals.latestSignals': 'Latest AI Signals',
+    'signals.getInstantAlerts': 'Get Instant Alerts',
+    'signals.whaleSignals': 'Whale Signals',
+    'signals.momentumSignals': 'Momentum Signals',
+    'signals.swingSignals': 'Swing Signals',
+    
+    // Market News
+    'news.title': 'Market News',
+    'news.subtitle': 'Stay ahead with market-moving news and analysis',
+    'news.todayNews': 'Today\'s News',
+    'news.highImpact': 'High Impact',
+    'news.marketMoving': 'Market Moving',
+    'news.accuracy': 'Accuracy',
+    'news.breakingNews': 'Breaking News',
+    'news.liveUpdates': 'Live updates',
+    'news.filter': 'Filter',
+    'news.watchAll': 'Watch All',
+    'news.loadMore': 'Load More News',
+    'news.earningsNews': 'Earnings News',
+    'news.economicData': 'Economic Data',
+    'news.analystReports': 'Analyst Reports',
+    
+    // Education
+    'education.title': 'Trading Education',
+    'education.subtitle': 'Master whale trading with expert-led courses and live sessions',
+    'education.courses': 'Courses',
+    'education.students': 'Students',
+    'education.hours': 'Hours',
+    'education.rating': 'Rating',
+    'education.featuredCourses': 'Featured Courses',
+    'education.upcomingWebinars': 'Upcoming Webinars',
+    'education.learningPaths': 'Learning Paths',
+    'education.startLearning': 'Start Learning Today',
+    
+    // Risk Management
+    'risk.title': 'Risk Management',
+    'risk.subtitle': 'Protect your capital with advanced risk monitoring and controls',
+    'risk.portfolioRisk': 'Portfolio Risk',
+    'risk.maxDrawdown': 'Max Drawdown',
+    'risk.sharpeRatio': 'Sharpe Ratio',
+    'risk.volatility': 'Volatility',
+    'risk.riskAlerts': 'Risk Alerts',
+    'risk.configureAlerts': 'Configure Alerts',
+    'risk.positionSizing': 'Position Sizing',
+    'risk.stopLossManagement': 'Stop Loss Management',
+    
+    // Backtesting
+    'backtesting.title': 'Strategy Backtesting',
+    'backtesting.subtitle': 'Test and validate your trading strategies with historical data',
+    'backtesting.totalReturn': 'Total Return',
+    'backtesting.sharpeRatio': 'Sharpe Ratio',
+    'backtesting.maxDrawdown': 'Max Drawdown',
+    'backtesting.winRate': 'Win Rate',
+    'backtesting.totalTrades': 'Total Trades',
+    'backtesting.avgHoldTime': 'Avg Hold Time',
+    'backtesting.strategyPerformance': 'Strategy Performance',
+    'backtesting.runBacktest': 'Run Backtest',
+    'backtesting.strategyLibrary': 'Strategy Library',
+    'backtesting.createNewStrategy': 'Create New Strategy',
+    
     // Common
     'common.topMovers': 'Top Movers',
     'common.marketSentiment': 'Market Sentiment',
@@ -169,6 +329,35 @@ const translations: Translations = {
     'common.back': 'Back',
     'common.next': 'Next',
     'common.previous': 'Previous',
+    'common.action': 'Action',
+    'common.symbol': 'Symbol',
+    'common.confidence': 'Confidence',
+    'common.target': 'Target',
+    'common.timeframe': 'Timeframe',
+    'common.thisMonth': 'This month',
+    'common.available': 'Available',
+    'common.activelearners': 'Active learners',
+    'common.content': 'Content',
+    'common.average': 'Average',
+    'common.executed': 'Executed',
+    'common.perPosition': 'Per position',
+    'common.articlesTracked': 'Articles tracked',
+    'common.activeAlerts': 'Active alerts',
+    'common.predictionRate': 'Prediction rate',
+    'common.currentLevel': 'Current level',
+    'common.lastDays': 'Last 30 days',
+    'common.riskAdjustedReturn': 'Risk-adjusted return',
+    'common.dayAverage': '30-day average',
+    'common.trackedEntities': 'Tracked entities',
+    'common.signalAccuracy': 'Signal accuracy',
+    'common.realTimeUpdates': 'Real-time updates',
+    'common.currentlyActive': 'Currently active',
+    'common.perSignal': 'Per signal',
+    'common.updatedRealTime': 'Updated in real-time',
+    'common.twoYearBacktest': '2-year backtest',
+    'common.riskAdjusted': 'Risk-adjusted',
+    'common.worstPeriod': 'Worst period',
+    'common.profitableTrades': 'Profitable trades',
     
     // Language names
     'lang.en': 'English',
@@ -201,57 +390,49 @@ const translations: Translations = {
     'nav.closed': 'Cerrado',
     'nav.register': 'Registrarse',
     
-    // Landing Page
-    'landing.hero.title': 'Rastrea Cada Movimiento de Ballenas',
-    'landing.hero.subtitle': '+$2.5B rastreados diariamente. Únete a traders élite que siguen movimientos de dinero institucional y actividad de pools oscuros para maximizar ganancias.',
-    'landing.hero.trustedBy': 'Confiado por 10,000+ Traders Profesionales',
-    'landing.hero.startTracking': 'Comenzar Rastreo de Ballenas',
-    'landing.hero.viewDemo': 'Ver Demo en Vivo',
-    'landing.hero.bankGrade': 'Seguridad de Grado Bancario',
-    'landing.hero.latency': 'Latencia 0.2ms',
-    'landing.hero.accuracy': 'Precisión 99.9%',
-    'landing.hero.optionsFlow': 'Flujo de Opciones',
-    'landing.hero.liveTrades': 'Operaciones en Vivo',
-    'landing.hero.darkPool': 'Pool Oscuro',
-    'landing.hero.alerts': 'Alertas',
-    'landing.urgency.title': '🚨 No Te Pierdas Otro Movimiento de Ballenas',
-    'landing.urgency.subtitle': 'Cada minuto que esperas, los traders institucionales están ganando millones. Únete ahora y recibe tu primera alerta de ballenas en segundos.',
-    'landing.urgency.alertsSent': '✅ 2,431 alertas enviadas hoy',
-    'landing.urgency.getAccess': 'Obtener Acceso Instantáneo Ahora',
+    // Options Flow
+    'optionsFlow.title': 'Flujo de Opciones en Tiempo Real',
+    'optionsFlow.subtitle': 'Seguimiento de actividad inusual de opciones',
+    'optionsFlow.allOptions': 'Todas las Opciones',
+    'optionsFlow.callsOnly': 'Solo Calls',
+    'optionsFlow.putsOnly': 'Solo Puts',
+    'optionsFlow.ticker': 'Símbolo',
+    'optionsFlow.type': 'Tipo',
+    'optionsFlow.strike': 'Strike',
+    'optionsFlow.expiry': 'Vencimiento',
+    'optionsFlow.size': 'Tamaño',
+    'optionsFlow.premium': 'Prima',
+    'optionsFlow.time': 'Hora',
     
-    // Analytics Page
-    'analytics.title': 'Análisis Avanzado',
-    'analytics.subtitle': 'Profundiza en las tendencias del mercado y patrones de trading',
-    'analytics.performanceOverview': 'Resumen de Rendimiento',
-    'analytics.winRate': 'Tasa de Ganancia',
-    'analytics.averageReturn': 'Retorno Promedio',
-    'analytics.sharpeRatio': 'Ratio de Sharpe',
-    'analytics.maxDrawdown': 'Máxima Pérdida',
-    'analytics.portfolioPerformance': 'Rendimiento del Portafolio',
-    'analytics.viewInteractiveCharts': 'Ver Gráficos Interactivos',
-    'analytics.topPerformers': 'Mejores Rendimientos',
-    'analytics.riskAnalysis': 'Análisis de Riesgo',
-    'analytics.portfolioBeta': 'Beta del Portafolio',
-    'analytics.volatility': 'Volatilidad',
-    'analytics.correlation': 'Correlación',
+    // Screener
+    'screener.title': 'Escáner de Acciones',
+    'screener.subtitle': 'Encuentra acciones con actividad de ballenas',
+    'screener.searchPlaceholder': 'Buscar acciones...',
+    'screener.allStocks': 'Todas las Acciones',
+    'screener.highWhaleActivity': 'Alta Actividad de Ballenas',
+    'screener.highVolume': 'Alto Volumen',
+    'screener.bigMovers': 'Grandes Movimientos',
+    'screener.stock': 'Acción',
+    'screener.price': 'Precio',
+    'screener.change': 'Cambio',
+    'screener.volume': 'Volumen',
+    'screener.marketCap': 'Cap. Mercado',
+    'screener.whaleActivity': 'Actividad Ballenas',
+    'screener.sentiment': 'Sentimiento',
     
-    // Pricing Page
-    'pricing.title': 'Elige tu Plan',
-    'pricing.subtitle': 'Desbloquea el poder de la inteligencia de trading institucional',
-    'pricing.basic': 'Básico',
-    'pricing.pro': 'Pro',
-    'pricing.enterprise': 'Empresarial',
-    'pricing.month': '/mes',
-    'pricing.mostPopular': 'Más Popular',
-    'pricing.getStarted': 'Comenzar',
-    'pricing.liveOptionsFlow': 'Flujo de Opciones en Vivo',
-    'pricing.basicAlerts': 'Alertas Básicas',
-    'pricing.marketScreener': 'Filtrador de Mercado',
-    'pricing.emailSupport': 'Soporte por Email',
-    
-    // Index Page
-    'index.title': 'Inteligencia de Mercado en Vivo',
-    'index.subtitle': 'Actividad de ballenas en tiempo real, flujo de opciones e insights de mercado - Actualizado',
+    // Alerts
+    'alerts.title': 'Alertas de Trading',
+    'alerts.subtitle': 'Notificaciones en tiempo real para eventos que mueven el mercado',
+    'alerts.unread': 'Alertas No Leídas',
+    'alerts.whale': 'Alertas de Ballenas',
+    'alerts.highPriority': 'Alta Prioridad',
+    'alerts.coverage': 'Cobertura',
+    'alerts.allAlerts': 'Todas las Alertas',
+    'alerts.unreadFilter': 'No Leídas',
+    'alerts.whaleActivity': 'Actividad de Ballenas',
+    'alerts.highPriorityFilter': 'Alta Prioridad',
+    'alerts.markAllRead': 'Marcar Todas como Leídas',
+    'alerts.filterAlerts': 'Filtrar Alertas',
     
     // Common
     'common.volume': 'Volumen',
@@ -293,34 +474,6 @@ const translations: Translations = {
     'nav.closed': 'Fermé',
     'nav.register': 'S\'inscrire',
     
-    // Landing Page
-    'landing.hero.title': 'Suivez Chaque Mouvement de Baleine',
-    'landing.hero.subtitle': '+2,5B$ suivis quotidiennement. Rejoignez les traders d\'élite qui suivent les mouvements d\'argent institutionnel et l\'activité des pools sombres pour maximiser les profits.',
-    'landing.hero.trustedBy': 'Approuvé par 10 000+ Traders Professionnels',
-    'landing.hero.startTracking': 'Commencer le Suivi des Baleines',
-    'landing.hero.viewDemo': 'Voir la Démo en Direct',
-    'landing.hero.bankGrade': 'Sécurité de Niveau Bancaire',
-    'landing.hero.latency': 'Latence 0,2ms',
-    'landing.hero.accuracy': 'Précision 99,9%',
-    
-    // Analytics Page
-    'analytics.title': 'Analytique Avancée',
-    'analytics.subtitle': 'Plongez dans les tendances du marché et les modèles de trading',
-    'analytics.performanceOverview': 'Aperçu des Performances',
-    'analytics.portfolioPerformance': 'Performance du Portefeuille',
-    'analytics.topPerformers': 'Meilleurs Performants',
-    'analytics.riskAnalysis': 'Analyse des Risques',
-    
-    // Pricing Page
-    'pricing.title': 'Choisissez Votre Plan',
-    'pricing.subtitle': 'Débloquez la puissance de l\'intelligence de trading institutionnelle',
-    'pricing.basic': 'Basique',
-    'pricing.pro': 'Pro',
-    'pricing.enterprise': 'Entreprise',
-    'pricing.month': '/mois',
-    'pricing.mostPopular': 'Le Plus Populaire',
-    'pricing.getStarted': 'Commencer',
-    
     // Language names
     'lang.en': 'English',
     'lang.es': 'Español',
@@ -351,34 +504,6 @@ const translations: Translations = {
     'nav.open': 'Offen',
     'nav.closed': 'Geschlossen',
     'nav.register': 'Registrieren',
-    
-    // Landing Page
-    'landing.hero.title': 'Verfolgen Sie Jeden Wal-Bewegung',
-    'landing.hero.subtitle': '+2,5B$ täglich verfolgt. Schließen Sie sich Elite-Tradern an, die institutionelle Geldbewegungen und Dark-Pool-Aktivitäten verfolgen, um Gewinne zu maximieren.',
-    'landing.hero.trustedBy': 'Vertraut von 10.000+ Professionellen Tradern',
-    'landing.hero.startTracking': 'Wal-Tracking Starten',
-    'landing.hero.viewDemo': 'Live-Demo Ansehen',
-    'landing.hero.bankGrade': 'Bankenklasse-Sicherheit',
-    'landing.hero.latency': '0,2ms Latenz',
-    'landing.hero.accuracy': '99,9% Genauigkeit',
-    
-    // Analytics Page
-    'analytics.title': 'Erweiterte Analytik',
-    'analytics.subtitle': 'Tauchen Sie tief in Markttrends und Trading-Muster ein',
-    'analytics.performanceOverview': 'Leistungsübersicht',
-    'analytics.portfolioPerformance': 'Portfolio-Performance',
-    'analytics.topPerformers': 'Top-Performer',
-    'analytics.riskAnalysis': 'Risikoanalyse',
-    
-    // Pricing Page
-    'pricing.title': 'Wählen Sie Ihren Plan',
-    'pricing.subtitle': 'Erschließen Sie die Macht institutioneller Trading-Intelligenz',
-    'pricing.basic': 'Basis',
-    'pricing.pro': 'Pro',
-    'pricing.enterprise': 'Unternehmen',
-    'pricing.month': '/Monat',
-    'pricing.mostPopular': 'Am Beliebtesten',
-    'pricing.getStarted': 'Loslegen',
     
     // Language names
     'lang.en': 'English',
@@ -411,34 +536,6 @@ const translations: Translations = {
     'nav.closed': '闭盘',
     'nav.register': '注册',
     
-    // Landing Page
-    'landing.hero.title': '追踪每一个鲸鱼动向',
-    'landing.hero.subtitle': '每日追踪超过25亿美元。加入精英交易者行列，跟踪机构资金流动和暗池活动以最大化利润。',
-    'landing.hero.trustedBy': '受到10,000+专业交易者信赖',
-    'landing.hero.startTracking': '开始追踪鲸鱼',
-    'landing.hero.viewDemo': '观看实时演示',
-    'landing.hero.bankGrade': '银行级安全',
-    'landing.hero.latency': '0.2毫秒延迟',
-    'landing.hero.accuracy': '99.9%准确率',
-    
-    // Analytics Page
-    'analytics.title': '高级分析',
-    'analytics.subtitle': '深入了解市场趋势和交易模式',
-    'analytics.performanceOverview': '表现概览',
-    'analytics.portfolioPerformance': '投资组合表现',
-    'analytics.topPerformers': '顶级表现者',
-    'analytics.riskAnalysis': '风险分析',
-    
-    // Pricing Page
-    'pricing.title': '选择您的计划',
-    'pricing.subtitle': '释放机构级交易智能的力量',
-    'pricing.basic': '基础',
-    'pricing.pro': '专业',
-    'pricing.enterprise': '企业',
-    'pricing.month': '/月',
-    'pricing.mostPopular': '最受欢迎',
-    'pricing.getStarted': '开始使用',
-    
     // Language names
     'lang.en': 'English',
     'lang.es': 'Español',
@@ -470,67 +567,13 @@ const translations: Translations = {
     'nav.closed': '閉場',
     'nav.register': '登録',
     
-    // Landing Page
-    'landing.hero.title': 'すべてのクジラの動きを追跡',
-    'landing.hero.subtitle': '毎日25億ドル以上を追跡。機関投資家の資金移動とダークプール活動を追跡して利益を最大化するエリートトレーダーに参加してください。',
-    'landing.hero.trustedBy': '10,000+のプロトレーダーに信頼されています',
-    'landing.hero.startTracking': 'ホエール追跡を開始',
-    'landing.hero.viewDemo': 'ライブデモを見る',
-    'landing.hero.bankGrade': '銀行レベルのセキュリティ',
-    'landing.hero.latency': '0.2ms遅延',
-    'landing.hero.accuracy': '99.9%精度',
-    
-    // Analytics Page
-    'analytics.title': '高度な分析',
-    'analytics.subtitle': '市場トレンドと取引パターンの詳細分析',
-    'analytics.performanceOverview': 'パフォーマンス概要',
-    'analytics.portfolioPerformance': 'ポートフォリオパフォーマンス',
-    'analytics.topPerformers': 'トップパフォーマー',
-    'analytics.riskAnalysis': 'リスク分析',
-    
-    // Pricing Page
-    'pricing.title': 'プランを選択',
-    'pricing.subtitle': '機関級取引インテリジェンスの力を解放',
-    'pricing.basic': 'ベーシック',
-    'pricing.pro': 'プロ',
-    'pricing.enterprise': 'エンタープライズ',
-    'pricing.month': '/月',
-    'pricing.mostPopular': '最も人気',
-    'pricing.getStarted': '始める',
-    
-    // Options Flow
-    'optionsFlow.title': 'Flujo de Opciones en Tiempo Real',
-    'optionsFlow.subtitle': 'Seguimiento de actividad inusual de opciones',
-    'optionsFlow.allOptions': 'Todas las Opciones',
-    'optionsFlow.callsOnly': 'Solo Calls',
-    'optionsFlow.putsOnly': 'Solo Puts',
-    'optionsFlow.ticker': 'Símbolo',
-    'optionsFlow.type': 'Tipo',
-    'optionsFlow.strike': 'Strike',
-    'optionsFlow.expiry': 'Vencimiento',
-    'optionsFlow.size': 'Tamaño',
-    'optionsFlow.premium': 'Prima',
-    'optionsFlow.time': 'Hora',
-    
-    // Screener
-    'screener.title': 'Escáner de Acciones',
-    'screener.subtitle': 'Encuentra acciones con actividad de ballenas',
-    'screener.searchPlaceholder': 'Buscar acciones...',
-    'screener.allStocks': 'Todas las Acciones',
-    'screener.highWhaleActivity': 'Alta Actividad de Ballenas',
-    'screener.highVolume': 'Alto Volumen',
-    'screener.bigMovers': 'Grandes Movimientos',
-    'screener.stock': 'Acción',
-    'screener.price': 'Precio',
-    'screener.change': 'Cambio',
-    'screener.volume': 'Volumen',
-    'screener.marketCap': 'Cap. Mercado',
-    'screener.whaleActivity': 'Actividad Ballenas',
-    'screener.sentiment': 'Sentimiento',
-    
-    // Index/Live Feed
-    'index.title': 'Alimentación en Vivo',
-    'index.subtitle': 'Datos de mercado en tiempo real actualizados en'
+    // Language names
+    'lang.en': 'English',
+    'lang.es': 'Español',
+    'lang.fr': 'Français',
+    'lang.de': 'Deutsch',
+    'lang.zh': '中文',
+    'lang.ja': '日本語',
   },
 };
 
@@ -571,7 +614,11 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
 
   const availableLanguages: AvailableLanguage[] = [
     { code: 'en', name: translations[language]?.['lang.en'] as string || 'English', flag: '🇺🇸' },
-    { code: 'es', name: translations[language]?.['lang.es'] as string || 'Español', flag: '🇪🇸' }
+    { code: 'es', name: translations[language]?.['lang.es'] as string || 'Español', flag: '🇪🇸' },
+    { code: 'fr', name: translations[language]?.['lang.fr'] as string || 'Français', flag: '🇫🇷' },
+    { code: 'de', name: translations[language]?.['lang.de'] as string || 'Deutsch', flag: '🇩🇪' },
+    { code: 'zh', name: translations[language]?.['lang.zh'] as string || '中文', flag: '🇨🇳' },
+    { code: 'ja', name: translations[language]?.['lang.ja'] as string || '日本語', flag: '🇯🇵' }
   ];
 
   return (
@@ -580,3 +627,5 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
     </TranslationContext.Provider>
   );
 };
+
+export default TranslationProvider;

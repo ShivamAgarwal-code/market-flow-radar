@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import TickerTape from '../components/TickerTape';
 import RedirectionLogic from '../components/RedirectionLogic';
-import { Bell, Clock, TrendingUp, TrendingDown, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Bell, Clock, TrendingUp, TrendingDown, AlertTriangle, CheckCircle, Filter } from 'lucide-react';
+import { useTranslation } from '../contexts/TranslationContext';
 
 interface Alert {
   id: string;
@@ -18,8 +18,10 @@ interface Alert {
 }
 
 const Alerts = () => {
+  const { t } = useTranslation();
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [filter, setFilter] = useState<'all' | 'unread' | 'whale' | 'high'>('all');
+  const [showMobileFilter, setShowMobileFilter] = useState(false);
 
   const generateAlert = (): Alert => {
     const tickers = ['AAPL', 'TSLA', 'NVDA', 'SPY', 'QQQ', 'MSFT', 'AMZN', 'GOOGL', 'META'];
@@ -132,140 +134,199 @@ const Alerts = () => {
       <Navigation />
       <TickerTape />
       
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-100 mb-2">
-              Trading Alerts
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        {/* Mobile-optimized Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 space-y-4 sm:space-y-0">
+          <div className="flex-1">
+            <h1 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-2">
+              {t('alerts.title')}
             </h1>
-            <p className="text-slate-400">
-              Real-time notifications for market-moving events
+            <p className="text-sm sm:text-base text-slate-400">
+              {t('alerts.subtitle')}
             </p>
           </div>
           
-          <div className="flex items-center space-x-4">
+          {/* Mobile-friendly action buttons */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
             {unreadCount > 0 && (
               <button 
                 onClick={markAllAsRead}
-                className="flex items-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
+                className="flex items-center justify-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors text-sm sm:text-base"
               >
                 <CheckCircle size={16} />
-                <span>Mark All Read</span>
+                <span>{t('alerts.markAllRead')}</span>
               </button>
             )}
           </div>
         </div>
 
-        {/* Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="trading-card p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-2xl font-bold text-slate-100">{unreadCount}</div>
-                <div className="text-slate-400 text-sm">Unread Alerts</div>
+        {/* Mobile-optimized Summary Cards */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-8">
+          <div className="trading-card p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <div className="mb-2 sm:mb-0">
+                <div className="text-lg sm:text-2xl font-bold text-slate-100">{unreadCount}</div>
+                <div className="text-slate-400 text-xs sm:text-sm">{t('alerts.unread')}</div>
               </div>
-              <Bell className="text-blue-400" size={24} />
+              <Bell className="text-blue-400 w-5 h-5 sm:w-6 sm:h-6 self-start sm:self-center" />
             </div>
           </div>
           
-          <div className="trading-card p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-2xl font-bold text-slate-100">
+          <div className="trading-card p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <div className="mb-2 sm:mb-0">
+                <div className="text-lg sm:text-2xl font-bold text-slate-100">
                   {alerts.filter(a => a.type === 'whale').length}
                 </div>
-                <div className="text-slate-400 text-sm">Whale Alerts</div>
+                <div className="text-slate-400 text-xs sm:text-sm">{t('alerts.whale')}</div>
               </div>
-              <TrendingUp className="text-emerald-400" size={24} />
+              <TrendingUp className="text-emerald-400 w-5 h-5 sm:w-6 sm:h-6 self-start sm:self-center" />
             </div>
           </div>
           
-          <div className="trading-card p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-2xl font-bold text-slate-100">
+          <div className="trading-card p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <div className="mb-2 sm:mb-0">
+                <div className="text-lg sm:text-2xl font-bold text-slate-100">
                   {alerts.filter(a => a.severity === 'high').length}
                 </div>
-                <div className="text-slate-400 text-sm">High Priority</div>
+                <div className="text-slate-400 text-xs sm:text-sm">{t('alerts.highPriority')}</div>
               </div>
-              <AlertTriangle className="text-red-400" size={24} />
+              <AlertTriangle className="text-red-400 w-5 h-5 sm:w-6 sm:h-6 self-start sm:self-center" />
             </div>
           </div>
           
-          <div className="trading-card p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-2xl font-bold text-slate-100">24h</div>
-                <div className="text-slate-400 text-sm">Coverage</div>
+          <div className="trading-card p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <div className="mb-2 sm:mb-0">
+                <div className="text-lg sm:text-2xl font-bold text-slate-100">24h</div>
+                <div className="text-slate-400 text-xs sm:text-sm">{t('alerts.coverage')}</div>
               </div>
-              <Clock className="text-purple-400" size={24} />
+              <Clock className="text-purple-400 w-5 h-5 sm:w-6 sm:h-6 self-start sm:self-center" />
             </div>
           </div>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex items-center space-x-4 mb-6">
-          {[
-            { key: 'all', label: 'All Alerts', count: alerts.length },
-            { key: 'unread', label: 'Unread', count: unreadCount },
-            { key: 'whale', label: 'Whale Activity', count: alerts.filter(a => a.type === 'whale').length },
-            { key: 'high', label: 'High Priority', count: alerts.filter(a => a.severity === 'high').length }
-          ].map(tab => (
+        {/* Mobile-optimized Filter Section */}
+        <div className="mb-6">
+          {/* Mobile Filter Button */}
+          <div className="block sm:hidden mb-4">
             <button
-              key={tab.key}
-              onClick={() => setFilter(tab.key as any)}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
-                filter === tab.key 
-                  ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' 
-                  : 'text-slate-400 hover:text-slate-300 hover:bg-slate-700/30'
-              }`}
+              onClick={() => setShowMobileFilter(!showMobileFilter)}
+              className="flex items-center justify-between w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-slate-300"
             >
-              <span>{tab.label}</span>
-              <span className="bg-slate-600 text-slate-300 px-2 py-0.5 rounded text-xs">
-                {tab.count}
-              </span>
+              <div className="flex items-center space-x-2">
+                <Filter size={16} />
+                <span>{t('alerts.filterAlerts')}</span>
+              </div>
+              <div className="text-sm text-slate-400">
+                {filter === 'all' ? t('alerts.allAlerts') : 
+                 filter === 'unread' ? t('alerts.unreadFilter') :
+                 filter === 'whale' ? t('alerts.whaleActivity') : t('alerts.highPriorityFilter')}
+              </div>
             </button>
-          ))}
+            
+            {showMobileFilter && (
+              <div className="mt-2 p-4 bg-slate-800/50 border border-slate-700 rounded-lg space-y-2">
+                {[
+                  { key: 'all', label: t('alerts.allAlerts'), count: alerts.length },
+                  { key: 'unread', label: t('alerts.unreadFilter'), count: unreadCount },
+                  { key: 'whale', label: t('alerts.whaleActivity'), count: alerts.filter(a => a.type === 'whale').length },
+                  { key: 'high', label: t('alerts.highPriorityFilter'), count: alerts.filter(a => a.severity === 'high').length }
+                ].map(tab => (
+                  <button
+                    key={tab.key}
+                    onClick={() => {
+                      setFilter(tab.key as any);
+                      setShowMobileFilter(false);
+                    }}
+                    className={`flex items-center justify-between w-full px-3 py-2 rounded-lg transition-colors ${
+                      filter === tab.key 
+                        ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' 
+                        : 'text-slate-400 hover:text-slate-300 hover:bg-slate-700/30'
+                    }`}
+                  >
+                    <span>{tab.label}</span>
+                    <span className="bg-slate-600 text-slate-300 px-2 py-0.5 rounded text-xs">
+                      {tab.count}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Desktop Filter Tabs */}
+          <div className="hidden sm:flex items-center space-x-4">
+            {[
+              { key: 'all', label: t('alerts.allAlerts'), count: alerts.length },
+              { key: 'unread', label: t('alerts.unreadFilter'), count: unreadCount },
+              { key: 'whale', label: t('alerts.whaleActivity'), count: alerts.filter(a => a.type === 'whale').length },
+              { key: 'high', label: t('alerts.highPriorityFilter'), count: alerts.filter(a => a.severity === 'high').length }
+            ].map(tab => (
+              <button
+                key={tab.key}
+                onClick={() => setFilter(tab.key as any)}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
+                  filter === tab.key 
+                    ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' 
+                    : 'text-slate-400 hover:text-slate-300 hover:bg-slate-700/30'
+                }`}
+              >
+                <span>{tab.label}</span>
+                <span className="bg-slate-600 text-slate-300 px-2 py-0.5 rounded text-xs">
+                  {tab.count}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Alerts List */}
-        <div className="trading-card">
+        {/* Mobile-optimized Alerts List */}
+        <div className="trading-card overflow-hidden">
           <div className="divide-y divide-slate-700/30">
             {filteredAlerts.map((alert) => {
               const AlertIcon = getAlertIcon(alert.type);
               return (
                 <div
                   key={alert.id}
-                  className={`p-6 cursor-pointer transition-colors ${
+                  className={`p-4 sm:p-6 cursor-pointer transition-colors ${
                     !alert.isRead ? 'bg-blue-500/5 border-l-4 border-blue-500' : 'hover:bg-slate-700/20'
                   }`}
                   onClick={() => markAsRead(alert.id)}
                 >
-                  <div className="flex items-start space-x-4">
-                    <div className={`p-2 rounded-lg ${getSeverityColor(alert.severity)}`}>
-                      <AlertIcon size={20} />
+                  <div className="flex items-start space-x-3 sm:space-x-4">
+                    {/* Icon */}
+                    <div className={`p-2 rounded-lg flex-shrink-0 ${getSeverityColor(alert.severity)}`}>
+                      <AlertIcon size={16} className="sm:w-5 sm:h-5" />
                     </div>
                     
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className={`font-semibold ${!alert.isRead ? 'text-slate-100' : 'text-slate-300'}`}>
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      {/* Header */}
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 space-y-2 sm:space-y-0">
+                        <h3 className={`font-semibold text-sm sm:text-base pr-2 ${!alert.isRead ? 'text-slate-100' : 'text-slate-300'}`}>
                           {alert.title}
                         </h3>
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
                           {alert.value && (
-                            <span className="text-emerald-400 font-semibold">{alert.value}</span>
+                            <span className="text-emerald-400 font-semibold text-sm">{alert.value}</span>
                           )}
-                          <span className="text-slate-500 text-sm">{alert.timestamp}</span>
+                          <span className="text-slate-500 text-xs sm:text-sm">{alert.timestamp}</span>
                           {!alert.isRead && (
-                            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                            <div className="w-2 h-2 bg-blue-400 rounded-full flex-shrink-0"></div>
                           )}
                         </div>
                       </div>
                       
-                      <p className="text-slate-400 text-sm mb-2">{alert.description}</p>
+                      {/* Description */}
+                      <p className="text-slate-400 text-xs sm:text-sm mb-3 line-clamp-2">
+                        {alert.description}
+                      </p>
                       
-                      <div className="flex items-center space-x-3">
-                        <span className="ticker-badge">{alert.ticker}</span>
+                      {/* Tags */}
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="ticker-badge text-xs">{alert.ticker}</span>
                         <span className={`px-2 py-1 rounded text-xs font-semibold ${getSeverityColor(alert.severity)}`}>
                           {alert.severity.toUpperCase()}
                         </span>
@@ -277,6 +338,14 @@ const Alerts = () => {
               );
             })}
           </div>
+
+          {/* Empty State */}
+          {filteredAlerts.length === 0 && (
+            <div className="text-center py-12">
+              <Bell className="mx-auto w-12 h-12 text-slate-500 mb-4" />
+              <p className="text-slate-400">No alerts match your current filter</p>
+            </div>
+          )}
         </div>
       </main>
     </div>

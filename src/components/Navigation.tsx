@@ -41,7 +41,7 @@ const Navigation = () => {
               WhaleSignal
             </Link>
           </div>
-          
+
           {/* Desktop Navigation - Main items */}
           <div className="hidden lg:flex items-center justify-center flex-1 px-4">
             <div className="flex items-center space-x-1">
@@ -50,8 +50,8 @@ const Navigation = () => {
                   key={path}
                   to={path}
                   className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap
-                    ${location.pathname === path 
-                      ? 'bg-blue-500/20 text-blue-300' 
+                    ${location.pathname === path
+                      ? 'bg-blue-500/20 text-blue-300'
                       : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
                     }`}
                 >
@@ -59,7 +59,7 @@ const Navigation = () => {
                   <span>{label}</span>
                 </Link>
               ))}
-              
+
               {/* More dropdown */}
               <div className="relative group">
                 <button className="flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 whitespace-nowrap">
@@ -102,16 +102,16 @@ const Navigation = () => {
                 }}
               />
             </div>
-            
+
             {/* Market Status */}
             <div className="text-xs text-slate-400 hidden xl:block">
               <div>{t('nav.marketStatus')} <span className="text-emerald-400">{t('nav.open')}</span></div>
             </div>
 
             <LanguageSelector />
-            
-            <Link 
-              to="/pricing" 
+
+            <Link
+              to="/pricing"
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-colors"
             >
               {t('nav.register')}
@@ -134,14 +134,15 @@ const Navigation = () => {
         {/* Mobile menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-slate-700/50">
-            <div className="px-2 pt-2 pb-3 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
-              {/* Search bar for mobile */}
+            <div className="px-2 pt-2 pb-3 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain">
+              {/* Add touch-friendly spacing */}
               <div className="relative mb-4">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={16} />
                 <input
                   type="text"
                   placeholder={t('nav.searchPlaceholder')}
-                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-3 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  // Add larger touch target
                   onKeyPress={(e) => {
                     if (e.key === 'Enter') {
                       const searchTerm = (e.target as HTMLInputElement).value;
@@ -154,28 +155,29 @@ const Navigation = () => {
                   }}
                 />
               </div>
-              
+
               {/* Market Status for mobile */}
               <div className="text-xs text-slate-400 mb-4 text-center">
                 {t('nav.marketStatus')} <span className="text-emerald-400">{t('nav.open')}</span>
               </div>
-              
+
+              {/* Update nav items with larger touch targets */}
               {allNavItems.map(({ path, label, icon: Icon }) => (
                 <Link
                   key={path}
                   to={path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center space-x-3 px-3 py-3 rounded-md text-base font-medium transition-colors
-                    ${location.pathname === path 
-                      ? 'bg-blue-500/20 text-blue-300' 
+                  className={`flex items-center space-x-3 px-4 py-4 rounded-md text-base font-medium transition-colors min-h-[48px]
+            ${location.pathname === path
+                      ? 'bg-blue-500/20 text-blue-300'
                       : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
                     }`}
                 >
-                  <Icon size={18} />
+                  <Icon size={20} />
                   <span>{label}</span>
                 </Link>
               ))}
-              
+
               <div className="pt-4 border-t border-slate-700/50">
                 <Link
                   to="/pricing"
